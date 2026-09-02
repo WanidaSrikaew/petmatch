@@ -38,7 +38,6 @@ class UserMatchingProfileAdmin(admin.ModelAdmin):
 class PetAdmin(admin.ModelAdmin):
     list_display = (
         "pet_id",
-        "pet_name",
         "breed",
         "species",
         "general_availability",

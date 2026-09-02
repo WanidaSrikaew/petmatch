@@ -538,22 +538,21 @@
                     </table>
                   </div>
                 </div>
-                <!-- Table 2: PET DATABASE MANAGEMENT -->
+                <!-- Table 2: PET BREED DATABASE MANAGEMENT -->
                 <div class="table-section-card" id="pet-management">
                   <div class="table-card-header">
                     <div class="table-card-title">
-                      <span>🐶</span> PET DATABASE MANAGEMENT (3NF Normalized)
+                      <span>🐾</span> PET BREED DATABASE (3NF Normalized)
                     </div>
                   </div>
                   <div class="table-responsive">
                     <table class="data-table">
                       <thead>
                         <tr>
-                          <th>Pet ID</th>
-                          <th>Name</th>
-                          <th>Species</th>
-                          <th>Breed</th>
-                          <th>Care Needs</th>
+                          <th>Breed ID</th>
+                          <th>Breed (สายพันธุ์)</th>
+                          <th>Species (ชนิด)</th>
+                          <th>Care Needs (การดูแลที่ต้องใส่ใจ)</th>
                           <th>Availability</th>
                           <th>Photos</th>
                         </tr>
@@ -562,10 +561,14 @@
                         {% for pet in pets_list %}
                           <tr>
                             <td><strong>P{{ pet.pet_id }}</strong></td>
-                            <td><strong>{{ pet.pet_name }}</strong></td>
+                            <td>
+                              <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ pet.primary_photo }}" alt="{{ pet.breed }}" style="width: 38px; height: 38px; border-radius: 8px; object-fit: cover; border: 1px solid #E2E8F0;">
+                                <strong>{{ pet.breed }}</strong>
+                              </div>
+                            </td>
                             <td>{{ pet.species }}</td>
-                            <td>{{ pet.breed }}</td>
-                            <td style="max-width: 260px;
+                            <td style="max-width: 280px;
                                        overflow: hidden;
                                        text-overflow: ellipsis;
                                        white-space: nowrap">{{ pet.species_care_needs }}</td>
@@ -578,10 +581,10 @@
                           </tr>
                         {% empty %}
                           <tr>
-                            <td colspan="7"
+                            <td colspan="6"
                                 style="text-align: center;
                                        color: #94A3B8;
-                                       padding: 20px">ไม่มีข้อมูลสัตว์เลี้ยงในฐานข้อมูล</td>
+                                       padding: 20px">ไม่มีข้อมูลสายพันธุ์ในฐานข้อมูล</td>
                           </tr>
                         {% endfor %}
                       </tbody>
@@ -622,7 +625,7 @@
                                                 height: 28px;
                                                 border-radius: 6px;
                                                 object-fit: cover">
-                                    <span>{{ top_rec.pet.pet_name }} ({{ top_rec.pet.breed }})</span>
+                                    <strong>{{ top_rec.pet.breed }}</strong>
                                   </div>
                                 {% else %}
                                   -

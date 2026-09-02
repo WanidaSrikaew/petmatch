@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Match: Find Your Perfect Family Member!</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Match: Find Your Perfect Family Member!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <style>
     :root {
       --bg-cream: #FBF6EF;
       --card-bg: #FFFFFF;
@@ -193,6 +194,7 @@
       grid-template-columns: 1.15fr 1fr;
       gap: 24px;
       margin-bottom: 30px;
+      align-items: start;
     }
 
     /* Card Panels */
@@ -208,6 +210,11 @@
     .panel-pets {
       background: var(--card-green);
       border: 2px solid var(--border-green);
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+      max-height: 890px;
     }
 
     .panel-title {
@@ -382,16 +389,24 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      max-height: 520px;
+      flex: 1;
+      min-height: 0;
       overflow-y: auto;
       padding-right: 6px;
     }
     .pet-cards-scroll::-webkit-scrollbar {
       width: 6px;
     }
-    .pet-cards-scroll::-webkit-scrollbar-thumb {
-      background: #A7F3D0;
+    .pet-cards-scroll::-webkit-scrollbar-track {
+      background: #D1FAE5;
       border-radius: 10px;
+    }
+    .pet-cards-scroll::-webkit-scrollbar-thumb {
+      background: #10B981;
+      border-radius: 10px;
+    }
+    .pet-cards-scroll::-webkit-scrollbar-thumb:hover {
+      background: #059669;
     }
 
     .pet-mini-card {
@@ -455,13 +470,47 @@
       font-weight: 500;
     }
     .btn-view-details {
-      background: transparent;
-      border: none;
-      color: #0284C7;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
       cursor: pointer;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      text-decoration: underline;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-view-details:hover {
+      background: #DBEAFE;
+      color: #1E40AF;
+      border-color: #93C5FD;
+    }
+
+    .species-tab {
+      background: #FFFFFF;
+      border: 1.5px solid #CBEAD2;
+      color: #166534;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .species-tab:hover {
+      background: #DCFCE7;
+      border-color: #10B981;
+    }
+    .species-tab.active {
+      background: #10B981;
+      color: #FFFFFF;
+      border-color: #10B981;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
     }
 
     /* MATCH RESULTS (TOP 3) SECTION */
@@ -713,283 +762,380 @@
       font-weight: 700;
       font-size: 1.1rem;
     }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <!-- Top Website Branding Header -->
-  <div class="top-branding-header">
-    <a href="/" class="brand-title-large">
-      <span class="brand-paw">🐾</span>Pet<span class="highlight">Match</span>
-    </a>
-  </div>
-
-  <!-- Browser Frame -->
-  <div class="app-window">
-    <!-- Window Bar -->
-    <div class="window-topbar">
-      <div class="window-dots">
-        <span class="dot dot-red"></span>
-        <span class="dot dot-yellow"></span>
-        <span class="dot dot-green"></span>
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Top Website Branding Header -->
+      <div class="top-branding-header">
+        <a href="/" class="brand-title-large">
+          <span class="brand-paw">🐾</span>Pet<span class="highlight">Match</span>
+        </a>
       </div>
-      <div class="window-url-bar">
-        🔒 petmatch.com
-      </div>
-      <div style="font-size: 0.8rem; color: #64748B;">Pet Match System</div>
-    </div>
-
-    <!-- Navigation Header -->
-    <div class="navbar">
-      <a href="/" class="brand-logo">
-        🐾 Pet<span>Match</span>
-      </a>
-      <div class="nav-links">
-        <span style="font-size: 0.88rem; color: #64748B; font-weight: 500;">User Journey</span>
-        <a href="#quiz-section" class="nav-btn primary">ทำแบบสอบถามจับคู่</a>
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <div class="split-grid" id="quiz-section">
-        
-        <!-- Left Panel: MATCHING QUIZ -->
-        <div class="panel-card panel-quiz">
-          <div class="panel-title">
-            <span>🎯</span> MATCHING QUIZ: YOUR LIFESTYLE
+      <!-- Browser Frame -->
+      <div class="app-window">
+        <!-- Window Bar -->
+        <div class="window-topbar">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
           </div>
-
-          <!-- Progress -->
-          <div class="quiz-progress-wrap">
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="quiz-progress-bar"></div>
-            </div>
-            <div class="progress-label" id="quiz-progress-text">Step 1 of 5 (25%)</div>
-          </div>
-
-          <form id="matchingQuizForm">
-            <!-- Question 1: Where do you live? -->
-            <div class="quiz-step">
-              <div class="question-title">
-                <span class="question-badge">1</span> Where do you live? (สถานที่พักอาศัย)
-              </div>
-              <div class="choices-row" id="choice-residence">
-                <div class="choice-card selected" data-value="Condo">
-                  <span class="icon">🏢</span>
-                  Condo
-                  <span class="sub">(with balcony / พื้นที่จำกัด)</span>
-                </div>
-                <div class="choice-card" data-value="House">
-                  <span class="icon">🏡</span>
-                  House
-                  <span class="sub">(with yard / มีสวนวิ่งเล่น)</span>
-                </div>
-              </div>
-              <input type="hidden" name="residence_type" id="residence_type" value="Condo">
-            </div>
-
-            <!-- Question 2: Space for Pet? -->
-            <div class="quiz-step">
-              <div class="question-title">
-                <span class="question-badge">2</span> Space for Pet? (พื้นที่สำหรับสัตว์เลี้ยง)
-              </div>
-              <div class="choices-row" id="choice-space">
-                <div class="choice-card selected" data-value="Compact">
-                  <span class="icon">📏</span>
-                  Compact
-                  <span class="sub">กะทัดรัด/ในห้อง</span>
-                </div>
-                <div class="choice-card" data-value="Medium">
-                  <span class="icon">📐</span>
-                  Medium
-                  <span class="sub">ปานกลาง/ลานบ้าน</span>
-                </div>
-                <div class="choice-card" data-value="Large">
-                  <span class="icon">🌳</span>
-                  Large Yard
-                  <span class="sub">สวนกว้างวิ่งเล่น</span>
-                </div>
-              </div>
-              <input type="hidden" name="space_size" id="space_size" value="Compact">
-            </div>
-
-            <!-- Question 3: Monthly Budget? -->
-            <div class="quiz-step">
-              <div class="question-title">
-                <span class="question-badge">3</span> Monthly Budget? (งบประมาณต่อเดือน)
-              </div>
-              <div class="slider-wrap">
-                <input type="range" min="1000" max="6000" step="500" value="2500" class="custom-slider" id="budgetRangeInput" name="monthly_budget">
-                <span class="budget-display" id="budgetDisplay">2,500 บาท/เดือน</span>
-              </div>
-            </div>
-
-            <!-- Question 4: Daily Available Time & Lifestyle? -->
-            <div class="quiz-step">
-              <div class="question-title">
-                <span class="question-badge">4</span> Time & Lifestyle? (เวลาและการทำงาน)
-              </div>
-              <div class="choices-row" id="choice-time">
-                <div class="choice-card selected" data-value="WFH">
-                  <span class="icon">💻</span>
-                  Work From Home
-                  <span class="sub">อยู่บ้านเป็นหลัก</span>
-                </div>
-                <div class="choice-card" data-value="1-2 hours">
-                  <span class="icon">⏰</span>
-                  1-2 Hours
-                  <span class="sub">มีเวลาปานกลาง</span>
-                </div>
-                <div class="choice-card" data-value="Busy">
-                  <span class="icon">💼</span>
-                  Busy / Out
-                  <span class="sub">ออกนอกบ้านบ่อย</span>
-                </div>
-              </div>
-              <input type="hidden" name="available_time" id="available_time" value="WFH">
-            </div>
-
-            <!-- Question 5: Experience & Allergies -->
-            <div class="quiz-step">
-              <div class="question-title">
-                <span class="question-badge">5</span> Experience & Shedding? (ประสบการณ์และภูมิแพ้)
-              </div>
-              <div class="choices-row">
-                <div class="choice-card selected" id="opt-experience" onclick="toggleExp(this)">
-                  <span class="icon">🌱</span>
-                  <span id="exp-text">มือใหม่หัดเลี้ยง (Beginner)</span>
-                  <span class="sub">ต้องการพันธุ์ฝึกง่าย</span>
-                </div>
-                <div class="choice-card" id="opt-allergy" onclick="toggleAllergy(this)">
-                  <span class="icon">🤧</span>
-                  <span id="allergy-text">แพ้ขนง่าย (Low Shedding)</span>
-                  <span class="sub">ขนชั้นเดียว ไม่ผลัดขน</span>
-                </div>
-              </div>
-              <input type="hidden" name="experience" id="experience" value="New">
-              <input type="hidden" name="allergy_concern" id="allergy_concern" value="No">
-            </div>
-
-            <!-- Match Button -->
-            <button type="button" class="btn-submit-match" id="btnMatchSubmit" onclick="submitMatchingQuiz()">
-              <span>✨</span> ค้นหาสายพันธุ์ที่เหมาะสมที่สุด (Start Matching!)
-            </button>
-          </form>
+          <div class="window-url-bar">🔒 petmatch.com</div>
+          <div style="font-size: 0.8rem; color: #64748B;">Pet Match System</div>
         </div>
-
-        <!-- Right Panel: OUR FURRY FRIENDS -->
-        <div class="panel-card panel-pets">
-          <div class="panel-title">
-            <span>🐾</span> PET CARDS: WHO'S AVAILABLE?
-          </div>
-          <p style="font-size: 0.85rem; color: #15803D; margin-bottom: 14px;">
-            พบกับเพื่อนขนฟูหลากหลายสายพันธุ์พร้อมข้อมูลการดูแล ค่าใช้จ่าย และลักษณะนิสัย
-          </p>
-
-          <div class="pet-cards-scroll">
-            {% for pet in pets %}
-            <div class="pet-mini-card">
-              <img src="{{ pet.primary_photo }}" alt="{{ pet.pet_name }}" class="pet-mini-thumb" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
-              <div class="pet-mini-info">
-                <div class="pet-mini-title">
-                  <span>{{ pet.breed }}</span>
-                  <span class="pet-breed-tag">{{ pet.general_availability }}</span>
-                </div>
-                <div class="pet-mini-desc">
-                  {{ pet.pet_description }}
-                </div>
-                <div class="pet-mini-footer">
-                  <span>{{ pet.basic_info_summary }}</span>
-                  <button type="button" class="btn-view-details" onclick="openPetModal({{ pet.pet_id }})">ดูคู่มือดูแล</button>
-                </div>
-              </div>
-            </div>
-            {% empty %}
-            <p style="color: #64748B; font-size: 0.85rem; text-align: center; padding: 20px;">กำลังโหลดรายชื่อสัตว์เลี้ยง...</p>
-            {% endfor %}
+        <!-- Navigation Header -->
+        <div class="navbar">
+          <a href="/" class="brand-logo">
+            🐾 Pet<span>Match</span>
+          </a>
+          <div class="nav-links">
+            <span style="font-size: 0.88rem; color: #64748B; font-weight: 500;">User Journey</span>
+            <a href="#quiz-section" class="nav-btn primary">ทำแบบสอบถามจับคู่</a>
           </div>
         </div>
-
-      </div>
-
-      <!-- BOTTOM SECTION: MATCH RESULTS (TOP 3) -->
-      <div class="results-section" id="results-container">
-        <div class="results-header">
-          <div class="results-title">
-            <span>⭐</span> MATCH RESULTS (TOP 3) - YOUR TOP MATCHES
-          </div>
-          <div class="scope-check-badge">
-            <span class="check-icon">✔</span>
-            <span>SCOPE CHECK: Both General and Specialized Pets Supported</span>
-          </div>
-        </div>
-
-        <div class="top3-grid" id="top3-cards-list">
-          {% if recent_result and recent_result.recommendations.all %}
-            {% for rec in recent_result.recommendations.all %}
-            <div class="result-match-card rank-{{ rec.rank }}">
-              <div>
-                <span class="rank-badge-ribbon">
-                  {% if rec.rank == 1 %}🥇 #1 BEST MATCH{% elif rec.rank == 2 %}🥈 #2 GREAT COMPANION{% else %}🥉 #3 TOP MATCH{% endif %}
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="split-grid" id="quiz-section">
+            <!-- Left Panel: MATCHING QUIZ -->
+            <div class="panel-card panel-quiz">
+              <div class="panel-title">
+                <span>🎯</span> MATCHING QUIZ: YOUR LIFESTYLE
+              </div>
+              <!-- Progress -->
+              <div class="quiz-progress-wrap">
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+                </div>
+                <div class="progress-label" id="quiz-progress-text">Step 1 of 5 (25%)</div>
+              </div>
+              <form id="matchingQuizForm">
+                <!-- Question 1: Pet Type Preference -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">1</span> What kind of pet? (ชนิดสัตว์เลี้ยงที่คุณสนใจ)
+                  </div>
+                  <div class="choices-row" id="choice-pet-type">
+                    <div class="choice-card" data-value="Dog">
+                      <span class="icon">🐶</span>
+                      สุนัข (Dog)
+                      <span class="sub">เพื่อนซื่อสัตย์ พลังงานสดใส</span>
+                    </div>
+                    <div class="choice-card" data-value="Cat">
+                      <span class="icon">🐱</span>
+                      แมว (Cat)
+                      <span class="sub">รักสงบ ขี้อ้อน เป็นอิสระ</span>
+                    </div>
+                    <div class="choice-card" data-value="Rabbit">
+                      <span class="icon">🐰</span>
+                      กระต่าย (Rabbit)
+                      <span class="sub">เงียบสงบ ตัวนุ่ม เลี้ยงง่าย</span>
+                    </div>
+                    <div class="choice-card selected" data-value="Any">
+                      <span class="icon">🐾</span>
+                      ได้ทั้งหมด (All)
+                      <span class="sub">เลือกที่เข้ากับวิถีชีวิตที่สุด</span>
+                    </div>
+                  </div>
+                  <input type="hidden"
+                         name="preferred_pet_type"
+                         id="preferred_pet_type"
+                         value="Any">
+                </div>
+                <!-- Question 2: Where do you live? -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">2</span> Where do you live? (สถานที่พักอาศัย)
+                  </div>
+                  <div class="choices-row" id="choice-residence">
+                    <div class="choice-card selected" data-value="Condo">
+                      <span class="icon">🏢</span>
+                      Condo
+                      <span class="sub">(with balcony / พื้นที่จำกัด)</span>
+                    </div>
+                    <div class="choice-card" data-value="House">
+                      <span class="icon">🏡</span>
+                      House
+                      <span class="sub">(with yard / มีสวนวิ่งเล่น)</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="residence_type" id="residence_type" value="Condo">
+                </div>
+                <!-- Question 3: Space for Pet? -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">3</span> Space for Pet? (พื้นที่สำหรับสัตว์เลี้ยง)
+                  </div>
+                  <div class="choices-row" id="choice-space">
+                    <div class="choice-card selected" data-value="Compact">
+                      <span class="icon">📏</span>
+                      Compact
+                      <span class="sub">กะทัดรัด/ในห้อง</span>
+                    </div>
+                    <div class="choice-card" data-value="Medium">
+                      <span class="icon">📐</span>
+                      Medium
+                      <span class="sub">ปานกลาง/ลานบ้าน</span>
+                    </div>
+                    <div class="choice-card" data-value="Large">
+                      <span class="icon">🌳</span>
+                      Large Yard
+                      <span class="sub">สวนกว้างวิ่งเล่น</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="space_size" id="space_size" value="Compact">
+                </div>
+                <!-- Question 4: Monthly Budget? -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">4</span> Monthly Budget? (งบประมาณต่อเดือน)
+                  </div>
+                  <div class="slider-wrap">
+                    <input type="range"
+                           min="500"
+                           max="8000"
+                           step="100"
+                           value="2000"
+                           class="custom-slider"
+                           id="budgetRangeInput"
+                           name="monthly_budget">
+                    <span class="budget-display" id="budgetDisplay">2,000 บาท/เดือน</span>
+                  </div>
+                </div>
+                <!-- Question 5: Daily Available Time & Lifestyle? -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">5</span> Time & Lifestyle? (เวลาและการทำงาน)
+                  </div>
+                  <div class="choices-row" id="choice-time">
+                    <div class="choice-card selected" data-value="WFH">
+                      <span class="icon">💻</span>
+                      Work From Home
+                      <span class="sub">อยู่บ้านเป็นหลัก</span>
+                    </div>
+                    <div class="choice-card" data-value="1-2 hours">
+                      <span class="icon">⏰</span>
+                      1-2 Hours
+                      <span class="sub">มีเวลาปานกลาง</span>
+                    </div>
+                    <div class="choice-card" data-value="Busy">
+                      <span class="icon">💼</span>
+                      Busy / Out
+                      <span class="sub">ออกนอกบ้านบ่อย</span>
+                    </div>
+                  </div>
+                  <input type="hidden" name="available_time" id="available_time" value="WFH">
+                </div>
+                <!-- Question 6: Experience & Allergies -->
+                <div class="quiz-step">
+                  <div class="question-title">
+                    <span class="question-badge">6</span> Experience & Shedding? (ประสบการณ์และภูมิแพ้)
+                  </div>
+                  <!-- Sub-Question A: Experience -->
+                  <div style="margin-bottom: 14px;">
+                    <div style="font-size: 0.84rem;
+                                font-weight: 600;
+                                color: #475569;
+                                margin-bottom: 8px">🐾 ประสบการณ์การเลี้ยงสัตว์เลี้ยง:</div>
+                    <div class="choices-row" id="choice-experience">
+                      <div class="choice-card selected" data-value="New">
+                        <span class="icon">🌱</span>
+                        มือใหม่หัดเลี้ยง (Beginner)
+                        <span class="sub">ต้องการพันธุ์ฝึกง่าย ดูแลง่าย</span>
+                      </div>
+                      <div class="choice-card" data-value="Experienced">
+                        <span class="icon">⭐</span>
+                        มีประสบการณ์ (Experienced)
+                        <span class="sub">พร้อมรับมือทุกนิสัยและพลังงาน</span>
+                      </div>
+                    </div>
+                    <input type="hidden" name="experience" id="experience" value="New">
+                  </div>
+                  <!-- Sub-Question B: Allergies -->
+                  <div>
+                    <div style="font-size: 0.84rem;
+                                font-weight: 600;
+                                color: #475569;
+                                margin-bottom: 8px">🤧 ความกังวลเรื่องภูมิแพ้และการผลัดขน:</div>
+                    <div class="choices-row" id="choice-allergy">
+                      <div class="choice-card selected" data-value="No">
+                        <span class="icon">✨</span>
+                        ไม่แพ้ขน (Normal)
+                        <span class="sub">รับได้ทุกสายพันธุ์ ผลัดขนได้</span>
+                      </div>
+                      <div class="choice-card" data-value="Yes">
+                        <span class="icon">🤧</span>
+                        แพ้ขนง่าย (Low Shedding)
+                        <span class="sub">ต้องการขนชั้นเดียว ไม่ผลัดขน</span>
+                      </div>
+                    </div>
+                    <input type="hidden" name="allergy_concern" id="allergy_concern" value="No">
+                  </div>
+                </div>
+                <!-- Match Button -->
+                <button type="button"
+                        class="btn-submit-match"
+                        id="btnMatchSubmit"
+                        onclick="submitMatchingQuiz()">
+                  <span>✨</span> ค้นหาสายพันธุ์ที่เหมาะสมที่สุด (Start Matching!)
+                </button>
+              </form>
+            </div>
+            <!-- Right Panel: OUR FURRY FRIENDS -->
+            <div class="panel-card panel-pets">
+              <div class="panel-title">
+                <span>🐾</span> PET CARDS: WHO'S AVAILABLE?
+              </div>
+              <p style="font-size: 0.85rem; color: #15803D; margin-bottom: 12px;">
+                พบกับเพื่อนขนฟูหลากหลายสายพันธุ์พร้อมข้อมูลการดูแล ค่าใช้จ่าย และลักษณะนิสัย
+              </p>
+              <!-- Species Filter Tabs -->
+              <div style="display: flex;
+                          gap: 8px;
+                          margin-bottom: 10px;
+                          flex-wrap: wrap">
+                <button type="button"
+                        class="species-tab active"
+                        onclick="filterSpecies('all', this)">🐾 ทั้งหมด (13)</button>
+                <button type="button"
+                        class="species-tab"
+                        onclick="filterSpecies('สุนัข', this)">🐶 สุนัข (5)</button>
+                <button type="button"
+                        class="species-tab"
+                        onclick="filterSpecies('แมว', this)">🐱 แมว (5)</button>
+                <button type="button"
+                        class="species-tab"
+                        onclick="filterSpecies('กระต่าย', this)">🐰 กระต่าย (3)</button>
+              </div>
+              <!-- Counter and hint -->
+              <div style="display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          font-size: 0.8rem;
+                          color: #047857;
+                          margin-bottom: 10px;
+                          padding: 0 4px;
+                          font-weight: 500">
+                <span id="pet-count-display">📋 แสดงสายพันธุ์ทั้งหมด 13 รายการ</span>
+                <span style="display: inline-flex;
+                             align-items: center;
+                             gap: 4px;
+                             color: #059669;
+                             font-size: 0.78rem;
+                             background: #DCFCE7;
+                             padding: 2px 8px;
+                             border-radius: 12px">
+                  <span>เลื่อนดูด้านในกล่อง</span> ↕️
                 </span>
               </div>
-              <div class="result-card-thumb-wrap">
-                <img src="{{ rec.pet.primary_photo }}" alt="{{ rec.pet.pet_name }}" class="result-card-thumb" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
-                <div class="score-chip">
-                  <span>🐾</span> {{ rec.matching_score|floatformat:0 }}%
-                </div>
-              </div>
-              <div class="result-pet-name">{{ rec.pet.pet_name }}</div>
-              <div class="result-pet-breed">{{ rec.pet.breed }}</div>
-
-              <div class="compatibility-bar-wrap">
-                <div class="compatibility-label">
-                  <span>ความเข้ากันได้</span>
-                  <span>{{ rec.matching_score|floatformat:1 }}%</span>
-                </div>
-                <div class="compatibility-track">
-                  <div class="compatibility-fill" style="width: {{ rec.matching_score }}%;"></div>
-                </div>
-              </div>
-
-              <div class="result-reason-box">
-                <div class="reason-tag">💡 เหตุผลที่แนะนำ:</div>
-                <p>{{ rec.matching_reason }}</p>
-              </div>
-
-              <div class="card-actions">
-                <button type="button" class="btn-action-view {% if rec.rank == 1 %}btn-action-primary{% endif %}" onclick="openPetModal({{ rec.pet.pet_id }})">
-                  ดูประวัติและคู่มือดูแล
-                </button>
+              <div class="pet-cards-scroll" id="petCardsScrollArea">
+                {% for pet in pets %}
+                  <div class="pet-mini-card" data-species="{{ pet.species }}">
+                    <img src="{{ pet.primary_photo }}"
+                         alt="{{ pet.pet_name }}"
+                         class="pet-mini-thumb"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
+                    <div class="pet-mini-info">
+                      <div class="pet-mini-title">
+                        <span>{{ pet.breed }}</span>
+                        <span class="pet-breed-tag">{{ pet.general_availability }}</span>
+                      </div>
+                      <div class="pet-mini-desc">{{ pet.pet_description }}</div>
+                      <div class="pet-mini-footer">
+                        <span>{{ pet.basic_info_summary }}</span>
+                        <button type="button"
+                                class="btn-view-details"
+                                onclick="openPetModal({{ pet.pet_id }})">ดูคู่มือดูแล</button>
+                      </div>
+                    </div>
+                  </div>
+                {% empty %}
+                  <p style="color: #64748B;
+                            font-size: 0.85rem;
+                            text-align: center;
+                            padding: 20px">กำลังโหลดรายชื่อสัตว์เลี้ยง...</p>
+                {% endfor %}
               </div>
             </div>
-            {% endfor %}
-          {% else %}
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: white; border-radius: 12px; border: 1px dashed #CBD5E1;">
-              <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">🐶🐱</span>
-              <h3 style="color: #334155; font-size: 1.1rem; margin-bottom: 6px;">ยังไม่มีผลการจับคู่</h3>
-              <p style="color: #64748B; font-size: 0.88rem;">กรอกแบบสอบถามด้านบนและกด <strong>"ค้นหาสายพันธุ์ที่เหมาะสมที่สุด"</strong> เพื่อดู 3 อันดับสายพันธุ์ที่เข้ากับคุณ</p>
+          </div>
+          <!-- BOTTOM SECTION: MATCH RESULTS (TOP 3) -->
+          <div class="results-section" id="results-container">
+            <div class="results-header">
+              <div class="results-title">
+                <span>⭐</span> MATCH RESULTS (TOP 3) - YOUR TOP MATCHES
+              </div>
+              <div class="scope-check-badge">
+                <span class="check-icon">✔</span>
+                <span>SCOPE CHECK: Both General and Specialized Pets Supported</span>
+              </div>
             </div>
-          {% endif %}
+            <div class="top3-grid" id="top3-cards-list">
+              {% if recent_result and recent_result.recommendations.all %}
+                {% for rec in recent_result.recommendations.all %}
+                  <div class="result-match-card rank-{{ rec.rank }}">
+                    <div>
+                      <span class="rank-badge-ribbon">
+                        {% if rec.rank == 1 %}🥇 #1 BEST MATCH{% elif rec.rank == 2 %}🥈 #2 GREAT COMPANION{% else %}🥉 #3 TOP MATCH{% endif %}
+                      </span>
+                    </div>
+                    <div class="result-card-thumb-wrap">
+                      <img src="{{ rec.pet.primary_photo }}"
+                           alt="{{ rec.pet.pet_name }}"
+                           class="result-card-thumb"
+                           onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
+                      <div class="score-chip">
+                        <span>🐾</span> {{ rec.matching_score|floatformat:0 }}%
+                      </div>
+                    </div>
+                    <div class="result-pet-name">{{ rec.pet.breed }}</div>
+                    <div class="result-pet-breed">{{ rec.pet.species }} • {{ rec.pet.general_availability }}</div>
+                    <div class="compatibility-bar-wrap">
+                      <div class="compatibility-label">
+                        <span>ความเข้ากันได้</span>
+                        <span>{{ rec.matching_score|floatformat:1 }}%</span>
+                      </div>
+                      <div class="compatibility-track">
+                        <div class="compatibility-fill" style="width: {{ rec.matching_score }}%;"></div>
+                      </div>
+                    </div>
+                    <div class="result-reason-box">
+                      <div class="reason-tag">💡 เหตุผลที่แนะนำ:</div>
+                      <p>{{ rec.matching_reason }}</p>
+                    </div>
+                    <div class="card-actions">
+                      <button type="button"
+                              class="btn-action-view {% if rec.rank == 1 %}btn-action-primary{% endif %}"
+                              onclick="openPetModal({{ rec.pet.pet_id }})">ดูประวัติและคู่มือดูแล</button>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div style="grid-column: 1 / -1;
+                            text-align: center;
+                            padding: 40px 20px;
+                            background: white;
+                            border-radius: 12px;
+                            border: 1px dashed #CBD5E1">
+                  <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">🐶🐱</span>
+                  <h3 style="color: #334155; font-size: 1.1rem; margin-bottom: 6px;">ยังไม่มีผลการจับคู่</h3>
+                  <p style="color: #64748B; font-size: 0.88rem;">กรอกแบบสอบถามด้านบนและกด <strong>"ค้นหาสายพันธุ์ที่เหมาะสมที่สุด"</strong> เพื่อดู 3 อันดับสายพันธุ์ที่เข้ากับคุณ</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Pet Detail Modal -->
-<div class="modal-overlay" id="petModal" onclick="closePetModal(event)">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closePetModal()">&times;</button>
-    <div id="modalContent">
-      <p style="text-align: center; color: #64748B;">กำลังโหลดข้อมูล...</p>
+    <!-- Pet Detail Modal -->
+    <div class="modal-overlay" id="petModal" onclick="closePetModal(event)">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closePetModal()">&times;</button>
+        <div id="modalContent">
+          <p style="text-align: center; color: #64748B;">กำลังโหลดข้อมูล...</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<script>
+    <script>
   // Budget Slider
   const budgetInput = document.getElementById('budgetRangeInput');
   const budgetDisplay = document.getElementById('budgetDisplay');
@@ -1012,32 +1158,74 @@
     });
   }
 
+  setupChoiceCards('choice-pet-type', 'preferred_pet_type');
   setupChoiceCards('choice-residence', 'residence_type');
   setupChoiceCards('choice-space', 'space_size');
   setupChoiceCards('choice-time', 'available_time');
+  setupChoiceCards('choice-experience', 'experience');
+  setupChoiceCards('choice-allergy', 'allergy_concern');
 
-  // Toggle Experience & Allergy
-  function toggleExp(card) {
-    const input = document.getElementById('experience');
-    if (input.value === 'New') {
-      input.value = 'Experienced';
-      document.getElementById('exp-text').textContent = 'มีประสบการณ์ (Experienced)';
+  // Species Filter in Right Panel
+  function filterSpecies(type, btn) {
+    document.querySelectorAll('.species-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    let visibleCount = 0;
+    document.querySelectorAll('.pet-mini-card').forEach(card => {
+      const sp = card.dataset.species || '';
+      if (type === 'all' || sp.includes(type)) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const countDisplay = document.getElementById('pet-count-display');
+    if (countDisplay) {
+      if (type === 'all') {
+        countDisplay.textContent = '📋 แสดงสายพันธุ์ทั้งหมด ' + visibleCount + ' รายการ';
+      } else {
+        countDisplay.textContent = '📋 แสดงสายพันธุ์' + type + ' ' + visibleCount + ' รายการ';
+      }
+    }
+
+    // Scroll back to top of list
+    const scrollArea = document.getElementById('petCardsScrollArea');
+    if (scrollArea) scrollArea.scrollTop = 0;
+  }
+
+  // Equalize Height: Make right panel (.panel-pets) exactly match left panel (.panel-quiz)
+  function syncPanelHeights() {
+    const leftPanel = document.querySelector('.panel-quiz');
+    const rightPanel = document.querySelector('.panel-pets');
+    if (!leftPanel || !rightPanel) return;
+
+    if (window.innerWidth > 900) {
+      const h = Math.round(leftPanel.offsetHeight);
+      if (h > 300) {
+        rightPanel.style.height = h + 'px';
+        rightPanel.style.maxHeight = h + 'px';
+      }
     } else {
-      input.value = 'New';
-      document.getElementById('exp-text').textContent = 'มือใหม่หัดเลี้ยง (Beginner)';
+      rightPanel.style.height = 'auto';
+      rightPanel.style.maxHeight = '600px';
     }
   }
 
-  function toggleAllergy(card) {
-    const input = document.getElementById('allergy_concern');
-    if (card.classList.contains('selected')) {
-      card.classList.remove('selected');
-      input.value = 'No';
-    } else {
-      card.classList.add('selected');
-      input.value = 'Yes';
-    }
+  window.addEventListener('DOMContentLoaded', syncPanelHeights);
+  window.addEventListener('load', syncPanelHeights);
+  window.addEventListener('resize', syncPanelHeights);
+
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => syncPanelHeights());
+    const lp = document.querySelector('.panel-quiz');
+    if (lp) ro.observe(lp);
   }
+  syncPanelHeights();
+  setTimeout(syncPanelHeights, 100);
+  setTimeout(syncPanelHeights, 300);
+  setTimeout(syncPanelHeights, 800);
 
   // Submit Matching Quiz via AJAX
   async function submitMatchingQuiz() {
@@ -1094,8 +1282,8 @@
               <span>🐾</span> ${Math.round(rec.score)}%
             </div>
           </div>
-          <div class="result-pet-name">${rec.pet_name}</div>
-          <div class="result-pet-breed">${rec.breed}</div>
+          <div class="result-pet-name">${rec.breed}</div>
+          <div class="result-pet-breed">${rec.species} • ${rec.general_availability}</div>
 
           <div class="compatibility-bar-wrap">
             <div class="compatibility-label">
@@ -1138,7 +1326,7 @@
           <img src="${pet.photos[0]}" style="width: 90px; height: 90px; border-radius: 14px; object-fit: cover;">
           <div>
             <h3 style="font-size: 1.25rem; color: #1E293B;">${pet.breed}</h3>
-            <p style="color: #64748B; font-size: 0.88rem;">${pet.pet_name} • สถานะ: ${pet.general_availability}</p>
+            <p style="color: #64748B; font-size: 0.88rem;">ชนิด: ${pet.species} • สถานะ: ${pet.general_availability}</p>
           </div>
         </div>
         <div style="background: #F8FAFC; border-radius: 10px; padding: 12px; margin-bottom: 12px; font-size: 0.88rem;">
@@ -1166,7 +1354,6 @@
   function closePetModal(e) {
     document.getElementById('petModal').style.display = 'none';
   }
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
