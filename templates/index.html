@@ -747,12 +747,6 @@
       </a>
       <div class="nav-links">
         <span style="font-size: 0.88rem; color: #64748B; font-weight: 500;">User Journey</span>
-        {% if request.user.is_authenticated and request.user.is_staff %}
-          <a href="/backoffice/" class="nav-btn secondary">⚙️ Admin Backoffice</a>
-          <a href="/logout/" class="nav-btn secondary" style="color: #EF4444; border-color: #FCA5A5; font-size: 0.82rem;">🚪 ออกจากระบบ ({{ request.user.username }})</a>
-        {% else %}
-          <a href="/admin/login/?next=/backoffice/" class="nav-btn secondary" title="เฉพาะผู้ดูแลระบบ" style="font-size: 0.82rem; color: #64748B;">🔒 เข้าสู่ระบบ Admin</a>
-        {% endif %}
         <a href="#quiz-section" class="nav-btn primary">ทำแบบสอบถามจับคู่</a>
       </div>
     </div>
@@ -776,14 +770,6 @@
           </div>
 
           <form id="matchingQuizForm">
-            <!-- User Information (Optional) -->
-            <div class="quiz-step" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 18px;">
-              <div style="font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.92rem; display: flex; align-items: center; gap: 6px;">
-                <span>👤</span> ชื่อของคุณ (Your Name) <span style="font-weight: 400; color: #94A3B8; font-size: 0.78rem;">(ระบุหรือไม่ระบุก็ได้)</span>
-              </div>
-              <input type="text" name="full_name" id="user_full_name" placeholder="เช่น คุณมุกดา หรือใส่ชื่อของคุณ..." style="width: 100%; padding: 10px 14px; border: 1px solid #CBD5E1; border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; outline: none;">
-            </div>
-
             <!-- Question 1: Where do you live? -->
             <div class="quiz-step">
               <div class="question-title">
@@ -884,12 +870,6 @@
               </div>
               <input type="hidden" name="experience" id="experience" value="New">
               <input type="hidden" name="allergy_concern" id="allergy_concern" value="No">
-
-              <!-- Optional User Info for Profile DB Record -->
-              <div class="input-grid">
-                <input type="text" name="full_name" class="input-field" placeholder="ชื่อผู้ใช้งาน (เช่น Jidtarat)" value="Jidtarat Bunyen">
-                <input type="email" name="email" class="input-field" placeholder="อีเมล (เช่น user@example.com)" value="jidtarat.bunyen@example.com">
-              </div>
             </div>
 
             <!-- Match Button -->
