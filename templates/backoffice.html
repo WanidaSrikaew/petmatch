@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Match: Admin Backoffice Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #F4F7FB;
+      --card-bg: #FFFFFF;
+      --border-color: #E2E8F0;
+      --sidebar-bg: #FFFFFF;
+      --sidebar-active: #EFF6FF;
+      --sidebar-active-text: #2563EB;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Prompt', 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      padding: 16px;
+      font-size: 0.88rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Top Banner */
+    .top-banner {
+      background: #EBF4FC;
+      border: 2px solid #BAE6FD;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .top-banner h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0369A1;
+      letter-spacing: 0.5px;
+    }
+    .top-banner p {
+      font-size: 0.85rem;
+      color: #0284C7;
+      margin-top: 2px;
+    }
+
+    /* Browser Window Wrapper */
+    .admin-window {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    /* Window Top Header */
+    .window-header {
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #FF5F56; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #27C93F; }
+
+    .portal-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border-color);
+      background: #FFFFFF;
+    }
+    .portal-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #1E293B;
+      text-decoration: none;
+    }
+    .portal-logo span {
+      color: #10B981;
+    }
+    .portal-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-return-app {
+      background: #F1F5F9;
+      color: #334155;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      border: 1px solid #CBD5E1;
+    }
+
+    /* Layout: Sidebar + Main */
+    .portal-body {
+      display: flex;
+      min-height: 800px;
+    }
+
+    /* Sidebar */
+    .portal-sidebar {
+      width: 220px;
+      border-right: 1px solid var(--border-color);
+      background: var(--sidebar-bg);
+      padding: 20px 12px;
+      flex-shrink: 0;
+    }
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sidebar-item a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .sidebar-item.active a, .sidebar-item a:hover {
+      background: var(--sidebar-active);
+      color: var(--sidebar-active-text);
+      font-weight: 600;
+    }
+
+    /* Main Dashboard Area */
+    .portal-main {
+      flex: 1;
+      padding: 24px;
+      overflow-x: auto;
+      background: #F8FAFC;
+    }
+
+    .main-page-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 20px;
+    }
+
+    /* KPI Stat Cards Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 1000px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .kpi-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .kpi-blue .kpi-icon-wrap { background: #EFF6FF; color: #2563EB; }
+    .kpi-green .kpi-icon-wrap { background: #ECFDF5; color: #10B981; }
+    .kpi-yellow .kpi-icon-wrap { background: #FEF3C7; color: #D97706; }
+    .kpi-teal .kpi-icon-wrap { background: #F0FDFA; color: #0D9488; }
+
+    .kpi-content {
+      flex: 1;
+    }
+    .kpi-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .kpi-val {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+    .kpi-sub {
+      font-size: 0.74rem;
+      color: #64748B;
+    }
+
+    /* Content Layout with Main Tables & Right Widgets */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px;
+    }
+    @media (max-width: 1100px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Section Card Table Containers */
+    .table-section-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .table-card-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .table-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0F172A;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.82rem;
+    }
+    .data-table th {
+      background: #F8FAFC;
+      color: #475569;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      color: #334155;
+      vertical-align: middle;
+    }
+    .data-table tr:hover td {
+      background: #F8FAFC;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+    .badge-common { background: #DCFCE7; color: #166534; }
+    .badge-spec { background: #FEF3C7; color: #92400E; }
+
+    .score-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .score-bar-mini {
+      flex: 1;
+      height: 6px;
+      background: #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 60px;
+    }
+    .score-bar-fill-mini {
+      height: 100%;
+      background: #10B981;
+    }
+
+    /* Right Widgets */
+    .widget-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .widget-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1E293B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-quick-action {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-quick-action:hover {
+      background: #EFF6FF;
+      color: #2563EB;
+      border-color: #93C5FD;
+    }
+
+    .schema-status-box {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-size: 0.8rem;
+      color: #166534;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <h2>PET MATCH: ANIMAL MATCHING SYSTEM - ADMIN BACKOFFICE</h2>
+    <p>Revised Database Schema for suitable owner matching | Student: Jidtarat Bunyen | ID: 6212732132</p>
+  </div>
+
+  <div class="admin-window">
+    <!-- Top Header -->
+    <div class="window-header">
+      <div class="window-dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div style="font-size: 0.82rem; color: #64748B;">Pet Match Admin Portal • Database Connected: MySQL (projectdb_6812732135)</div>
+      <div style="font-size: 0.82rem; color: #64748B;">Student: 6212732132</div>
+    </div>
+
+    <!-- Portal Navigation -->
+    <div class="portal-nav-bar">
+      <a href="/backoffice/" class="portal-logo">
+        🐾 Pet Match <span>Admin Portal</span>
+      </a>
+      <div class="portal-controls">
+        <a href="/" class="btn-return-app">⬅ กลับไปหน้า Matching Front-End</a>
+        <div style="font-weight: 600; color: #334155;">👤 Admin: Jidtarat Bunyen</div>
+      </div>
+    </div>
+
+    <div class="portal-body">
+      <!-- Sidebar -->
+      <div class="portal-sidebar">
+        <ul class="sidebar-menu">
+          <li class="sidebar-item active"><a href="#">📊 Dashboard</a></li>
+          <li class="sidebar-item"><a href="#pet-management">🐶 Pets Database</a></li>
+          <li class="sidebar-item"><a href="#user-profiles">👥 Matching Profiles</a></li>
+          <li class="sidebar-item"><a href="#matching-results">⭐ Results & Logs</a></li>
+          <li class="sidebar-item"><a href="/">🐾 Front-End Quiz</a></li>
+          <li class="sidebar-item"><a href="/admin/">🔒 Django Admin</a></li>
+        </ul>
+      </div>
+
+      <!-- Main Dashboard -->
+      <div class="portal-main">
+        <h1 class="main-page-title">Backoffice Dashboard</h1>
+
+        <!-- 4 KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-icon-wrap">👤</div>
+            <div class="kpi-content">
+              <div class="kpi-label">TOTAL USERS</div>
+              <div class="kpi-val">{{ total_users }}</div>
+              <div class="kpi-sub">Current active users</div>
+            </div>
+          </div>
+
+          <div class="kpi-card kpi-green">
+            <div class="kpi-icon-wrap">🐾</div>
+            <div class="kpi-content">
+              <div class="kpi-label">TOTAL PETS</div>
+              <div class="kpi-val">{{ total_pets }}</div>
+              <div class="kpi-sub">{{ common_pct }}% Common, {{ specialized_pct }}% Specialized</div>
+            </div>
+          </div>
+
+          <div class="kpi-card kpi-yellow">
+            <div class="kpi-icon-wrap">⭐</div>
+            <div class="kpi-content">
+              <div class="kpi-label">MATCHING ATTEMPTS</div>
+              <div class="kpi-val">{{ matching_attempts }}</div>
+              <div class="kpi-sub">Total calculation attempts</div>
+            </div>
+          </div>
+
+          <div class="kpi-card kpi-teal">
+            <div class="kpi-icon-wrap">🖼️</div>
+            <div class="kpi-content">
+              <div class="kpi-label">ACTIVE PET LISTINGS</div>
+              <div class="kpi-val">{{ active_listings }}</div>
+              <div class="kpi-sub">with primary image</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-layout">
+          <div class="dashboard-main-col">
+            
+            <!-- Table 1: USER MATCHING PROFILE MANAGEMENT -->
+            <div class="table-section-card" id="user-profiles">
+              <div class="table-card-header">
+                <div class="table-card-title">
+                  <span>📋</span> USER MATCHING PROFILE MANAGEMENT
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Profile ID</th>
+                      <th>User Name</th>
+                      <th>Residence</th>
+                      <th>Budget</th>
+                      <th>Time Daily</th>
+                      <th>Experience</th>
+                      <th>Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for p in profiles %}
+                    <tr>
+                      <td><strong>#{{ p.user_profile_id }}</strong></td>
+                      <td>{{ p.user.full_name|default:"Anonymous" }}</td>
+                      <td>{{ p.residence_type }}</td>
+                      <td>{{ p.budget_range }}</td>
+                      <td>{{ p.available_time_daily }}</td>
+                      <td>{{ p.pet_care_experience }}</td>
+                      <td>{{ p.created_at|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="7" style="text-align: center; color: #94A3B8; padding: 20px;">ยังไม่มีข้อมูล Profile การค้นหา</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Table 2: PET DATABASE MANAGEMENT -->
+            <div class="table-section-card" id="pet-management">
+              <div class="table-card-header">
+                <div class="table-card-title">
+                  <span>🐶</span> PET DATABASE MANAGEMENT (3NF Normalized)
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Pet ID</th>
+                      <th>Name</th>
+                      <th>Species</th>
+                      <th>Breed</th>
+                      <th>Care Needs</th>
+                      <th>Availability</th>
+                      <th>Photos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pet in pets_list %}
+                    <tr>
+                      <td><strong>P{{ pet.pet_id }}</strong></td>
+                      <td><strong>{{ pet.pet_name }}</strong></td>
+                      <td>{{ pet.species }}</td>
+                      <td>{{ pet.breed }}</td>
+                      <td style="max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        {{ pet.species_care_needs }}
+                      </td>
+                      <td>
+                        <span class="badge-status {% if pet.general_availability == 'Common' %}badge-common{% else %}badge-spec{% endif %}">
+                          {{ pet.general_availability }}
+                        </span>
+                      </td>
+                      <td>📸 {{ pet.photos.count }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="7" style="text-align: center; color: #94A3B8; padding: 20px;">ไม่มีข้อมูลสัตว์เลี้ยงในฐานข้อมูล</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Table 3: RECENT MATCHING ATTEMPTS & RESULTS LOG -->
+            <div class="table-section-card" id="matching-results">
+              <div class="table-card-header">
+                <div class="table-card-title">
+                  <span>📊</span> RECENT MATCHING ATTEMPTS & RESULTS LOG
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Result ID</th>
+                      <th>Profile ID</th>
+                      <th>User Name</th>
+                      <th>Top Pet Recommended</th>
+                      <th>Matching Score</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for res in recent_attempts %}
+                    <tr>
+                      <td><strong>RES-{{ res.result_id }}</strong></td>
+                      <td>#{{ res.user_profile.user_profile_id }}</td>
+                      <td>{{ res.user_profile.user.full_name|default:"Guest" }}</td>
+                      <td>
+                        {% with top_rec=res.recommendations.first %}
+                          {% if top_rec %}
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                              <img src="{{ top_rec.pet.primary_photo }}" style="width: 28px; height: 28px; border-radius: 6px; object-fit: cover;">
+                              <span>{{ top_rec.pet.pet_name }} ({{ top_rec.pet.breed }})</span>
+                            </div>
+                          {% else %}
+                            -
+                          {% endif %}
+                        {% endwith %}
+                      </td>
+                      <td>
+                        <div class="score-progress-wrap">
+                          <div class="score-bar-mini">
+                            <div class="score-bar-fill-mini" style="width: {{ res.overall_compatibility_score }}%;"></div>
+                          </div>
+                          <strong>{{ res.overall_compatibility_score|floatformat:0 }}%</strong>
+                        </div>
+                      </td>
+                      <td>{{ res.timestamp|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="6" style="text-align: center; color: #94A3B8; padding: 20px;">ยังไม่มีประวัติการจับคู่</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar Widgets -->
+          <div class="dashboard-side-col">
+            
+            <div class="widget-box">
+              <div class="widget-title">⚡ QUICK ACTIONS</div>
+              <div class="action-btn-list">
+                <a href="/admin/web/pet/add/" class="btn-quick-action">
+                  <span>➕</span> ADD NEW PET
+                </a>
+                <a href="/admin/auth/user/add/" class="btn-quick-action">
+                  <span>👤</span> REGISTER NEW ADMIN
+                </a>
+                <a href="/backoffice/" class="btn-quick-action">
+                  <span>🔄</span> REFRESH DASHBOARD
+                </a>
+                <a href="/" class="btn-quick-action" style="background: #EFF6FF; color: #2563EB;">
+                  <span>🎯</span> OPEN MATCHING QUIZ
+                </a>
+              </div>
+            </div>
+
+            <div class="widget-box">
+              <div class="widget-title">🛡️ DATABASE HEALTH</div>
+              <div class="schema-status-box">
+                <strong>✔ Schema: Normalized (3NF)</strong>
+                <p style="margin-top: 4px; font-size: 0.76rem; color: #15803D;">
+                  MySQL connection is active. All foreign keys and tables follow 3NF normalization rules.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
