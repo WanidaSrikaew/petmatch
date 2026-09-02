@@ -881,7 +881,7 @@
           <div class="pet-cards-scroll">
             {% for pet in pets %}
             <div class="pet-mini-card">
-              <img src="{{ pet.primary_photo }}" alt="{{ pet.pet_name }}" class="pet-mini-thumb">
+              <img src="{{ pet.primary_photo }}" alt="{{ pet.pet_name }}" class="pet-mini-thumb" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
               <div class="pet-mini-info">
                 <div class="pet-mini-title">
                   <span>{{ pet.breed }}</span>
@@ -926,7 +926,7 @@
                 </span>
               </div>
               <div class="result-card-thumb-wrap">
-                <img src="{{ rec.pet.primary_photo }}" alt="{{ rec.pet.pet_name }}" class="result-card-thumb">
+                <img src="{{ rec.pet.primary_photo }}" alt="{{ rec.pet.pet_name }}" class="result-card-thumb" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
                 <div class="score-chip">
                   <span>🐾</span> {{ rec.matching_score|floatformat:0 }}%
                 </div>
@@ -1079,7 +1079,7 @@
             <span class="rank-badge-ribbon">${ribbonText}</span>
           </div>
           <div class="result-card-thumb-wrap">
-            <img src="${rec.photo_url}" alt="${rec.pet_name}" class="result-card-thumb">
+            <img src="${rec.photo_url}" alt="${rec.pet_name}" class="result-card-thumb" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80';">
             <div class="score-chip">
               <span>🐾</span> ${Math.round(rec.score)}%
             </div>
