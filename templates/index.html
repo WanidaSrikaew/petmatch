@@ -6,7 +6,7 @@
   <title>Pet Match: Find Your Perfect Family Member!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-cream: #FBF6EF;
@@ -53,25 +53,37 @@
       margin: 0 auto;
     }
 
-    /* Top Student Requirement Header */
-    .mockup-header-banner {
-      background: #FEE7CE;
-      border: 2px dashed #E0A96D;
-      border-radius: var(--radius-md);
-      padding: 12px 20px;
+    /* Top Website Branding Header */
+    .top-branding-header {
       text-align: center;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
+      padding: 14px 0 20px 0;
     }
-    .mockup-header-banner h2 {
-      font-size: 1.15rem;
+    .brand-title-large {
+      font-family: 'Fredoka', 'Outfit', 'Prompt', sans-serif;
+      font-size: 3.4rem;
       font-weight: 700;
-      color: #7A3E08;
+      letter-spacing: -0.5px;
+      color: #1E293B;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      filter: drop-shadow(0 3px 12px rgba(0,0,0,0.06));
     }
-    .mockup-header-banner p {
-      font-size: 0.88rem;
-      color: #925114;
-      margin-top: 2px;
+    .brand-title-large .brand-paw {
+      font-size: 3rem;
+      filter: drop-shadow(0 4px 8px rgba(255, 112, 67, 0.4));
+      display: inline-block;
+      animation: floatPaw 3s ease-in-out infinite;
+    }
+    .brand-title-large .highlight {
+      background: linear-gradient(135deg, #FF7043 0%, #F4511E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes floatPaw {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(6deg); }
     }
 
     /* Main Window Frame */
@@ -131,13 +143,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.4rem;
+      font-family: 'Fredoka', 'Outfit', sans-serif;
+      font-size: 1.6rem;
       font-weight: 700;
-      color: #433832;
+      color: #1E293B;
       text-decoration: none;
+      letter-spacing: -0.3px;
     }
     .brand-logo span {
-      color: #FF7043;
+      background: linear-gradient(135deg, #FF7043, #F4511E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .nav-links {
       display: flex;
@@ -702,10 +718,11 @@
 <body>
 
 <div class="container">
-  <!-- Top Conceptual Mockup Banner -->
-  <div class="mockup-header-banner">
-    <h2>Pet Match: Find Your Perfect Family Member! - Conceptual Front-End</h2>
-    <p>Requirement by Miss Jidtarat Bunyen | ID: 6212732132 | 3NF Normalized Database System</p>
+  <!-- Top Website Branding Header -->
+  <div class="top-branding-header">
+    <a href="/" class="brand-title-large">
+      <span class="brand-paw">🐾</span>Pet<span class="highlight">Match</span>
+    </a>
   </div>
 
   <!-- Browser Frame -->
@@ -718,9 +735,9 @@
         <span class="dot dot-green"></span>
       </div>
       <div class="window-url-bar">
-        🔒 petmatch.local/find-your-perfect-companion
+        🔒 petmatch.com
       </div>
-      <div style="font-size: 0.8rem; color: #64748B;">Student: 6212732132</div>
+      <div style="font-size: 0.8rem; color: #64748B;">Pet Match System</div>
     </div>
 
     <!-- Navigation Header -->
