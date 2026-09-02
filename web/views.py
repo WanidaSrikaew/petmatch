@@ -1,4 +1,5 @@
 import json
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -71,6 +72,7 @@ def api_match_view(request):
     return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
 
+@staff_member_required(login_url="/admin/login/?next=/backoffice/")
 def backoffice_view(request):
     total_users = User.objects.count()
     total_pets = Pet.objects.count()

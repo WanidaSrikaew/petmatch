@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Match: Admin Backoffice Portal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@500;600;700;800&family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Match: Admin Backoffice Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@500;600;700;800&family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+    <style>
     :root {
       --bg-body: #F4F7FB;
       --card-bg: #FFFFFF;
@@ -390,285 +391,297 @@
       font-size: 0.8rem;
       color: #166534;
     }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <!-- Top Branding Header -->
-  <div style="text-align: center; padding: 10px 0 16px 0;">
-    <a href="/backoffice/" style="font-family: 'Fredoka', 'Outfit', sans-serif; font-size: 2.4rem; font-weight: 700; color: #1E293B; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-      <span>🐾</span>Pet<span style="background: linear-gradient(135deg, #2563EB, #1D4ED8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Match</span> <span style="font-size: 1.15rem; color: #64748B; font-weight: 500; margin-left: 6px;">Admin Backoffice</span>
-    </a>
-  </div>
-
-  <div class="admin-window">
-    <!-- Top Header -->
-    <div class="window-header">
-      <div class="window-dots">
-        <span class="dot dot-red"></span>
-        <span class="dot dot-yellow"></span>
-        <span class="dot dot-green"></span>
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Top Branding Header -->
+      <div style="text-align: center; padding: 10px 0 16px 0;">
+        <a href="/backoffice/"
+           style="font-family: 'Fredoka', 'Outfit', sans-serif;
+                  font-size: 2.4rem;
+                  font-weight: 700;
+                  color: #1E293B;
+                  text-decoration: none;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px">
+          <span>🐾</span>Pet<span style="background: linear-gradient(135deg, #2563EB, #1D4ED8);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent">Match</span> <span style="font-size: 1.15rem;
+              color: #64748B;
+              font-weight: 500;
+              margin-left: 6px">Admin Backoffice</span>
+        </a>
       </div>
-      <div style="font-size: 0.82rem; color: #64748B;">Pet Match Admin Portal • Database Connected: MySQL (projectdb_6812732135)</div>
-      <div style="font-size: 0.82rem; color: #64748B;">Pet Match System</div>
-    </div>
-
-    <!-- Portal Navigation -->
-    <div class="portal-nav-bar">
-      <a href="/backoffice/" class="portal-logo">
-        🐾 Pet Match <span>Admin Portal</span>
-      </a>
-      <div class="portal-controls">
-        <a href="/" class="btn-return-app">⬅ กลับไปหน้า Matching Front-End</a>
-        <div style="font-weight: 600; color: #334155;">👤 Admin: Jidtarat Bunyen</div>
-      </div>
-    </div>
-
-    <div class="portal-body">
-      <!-- Sidebar -->
-      <div class="portal-sidebar">
-        <ul class="sidebar-menu">
-          <li class="sidebar-item active"><a href="#">📊 Dashboard</a></li>
-          <li class="sidebar-item"><a href="#pet-management">🐶 Pets Database</a></li>
-          <li class="sidebar-item"><a href="#user-profiles">👥 Matching Profiles</a></li>
-          <li class="sidebar-item"><a href="#matching-results">⭐ Results & Logs</a></li>
-          <li class="sidebar-item"><a href="/">🐾 Front-End Quiz</a></li>
-          <li class="sidebar-item"><a href="/admin/">🔒 Django Admin</a></li>
-        </ul>
-      </div>
-
-      <!-- Main Dashboard -->
-      <div class="portal-main">
-        <h1 class="main-page-title">Backoffice Dashboard</h1>
-
-        <!-- 4 KPI Cards -->
-        <div class="kpi-grid">
-          <div class="kpi-card kpi-blue">
-            <div class="kpi-icon-wrap">👤</div>
-            <div class="kpi-content">
-              <div class="kpi-label">TOTAL USERS</div>
-              <div class="kpi-val">{{ total_users }}</div>
-              <div class="kpi-sub">Current active users</div>
-            </div>
+      <div class="admin-window">
+        <!-- Top Header -->
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
           </div>
-
-          <div class="kpi-card kpi-green">
-            <div class="kpi-icon-wrap">🐾</div>
-            <div class="kpi-content">
-              <div class="kpi-label">TOTAL PETS</div>
-              <div class="kpi-val">{{ total_pets }}</div>
-              <div class="kpi-sub">{{ common_pct }}% Common, {{ specialized_pct }}% Specialized</div>
-            </div>
+          <div style="font-size: 0.82rem; color: #64748B;">Pet Match Admin Portal • Database Connected: MySQL (projectdb_6812732135)</div>
+          <div style="font-size: 0.82rem; color: #64748B;">Pet Match System</div>
+        </div>
+        <!-- Portal Navigation -->
+        <div class="portal-nav-bar">
+          <a href="/backoffice/" class="portal-logo">
+            🐾 Pet Match <span>Admin Portal</span>
+          </a>
+          <div class="portal-controls">
+            <a href="/" class="btn-return-app">⬅ กลับไปหน้า Matching Front-End</a>
+            <div style="font-weight: 600; color: #334155;">👤 Admin: {{ request.user.username }}</div>
+            <a href="/admin/logout/?next=/" class="btn-return-app" style="color: #EF4444; border-color: #FCA5A5;">🚪 ออกจากระบบ</a>
           </div>
-
-          <div class="kpi-card kpi-yellow">
-            <div class="kpi-icon-wrap">⭐</div>
-            <div class="kpi-content">
-              <div class="kpi-label">MATCHING ATTEMPTS</div>
-              <div class="kpi-val">{{ matching_attempts }}</div>
-              <div class="kpi-sub">Total calculation attempts</div>
-            </div>
+        </div>
+        <div class="portal-body">
+          <!-- Sidebar -->
+          <div class="portal-sidebar">
+            <ul class="sidebar-menu">
+              <li class="sidebar-item active"><a href="#">📊 Dashboard</a></li>
+              <li class="sidebar-item"><a href="#pet-management">🐶 Pets Database</a></li>
+              <li class="sidebar-item"><a href="#user-profiles">👥 Matching Profiles</a></li>
+              <li class="sidebar-item"><a href="#matching-results">⭐ Results & Logs</a></li>
+              <li class="sidebar-item"><a href="/">🐾 Front-End Quiz</a></li>
+              <li class="sidebar-item"><a href="/admin/">🔒 Django Admin</a></li>
+            </ul>
           </div>
-
-          <div class="kpi-card kpi-teal">
-            <div class="kpi-icon-wrap">🖼️</div>
-            <div class="kpi-content">
-              <div class="kpi-label">ACTIVE PET LISTINGS</div>
-              <div class="kpi-val">{{ active_listings }}</div>
-              <div class="kpi-sub">with primary image</div>
+          <!-- Main Dashboard -->
+          <div class="portal-main">
+            <h1 class="main-page-title">Backoffice Dashboard</h1>
+            <!-- 4 KPI Cards -->
+            <div class="kpi-grid">
+              <div class="kpi-card kpi-blue">
+                <div class="kpi-icon-wrap">👤</div>
+                <div class="kpi-content">
+                  <div class="kpi-label">TOTAL USERS</div>
+                  <div class="kpi-val">{{ total_users }}</div>
+                  <div class="kpi-sub">Current active users</div>
+                </div>
+              </div>
+              <div class="kpi-card kpi-green">
+                <div class="kpi-icon-wrap">🐾</div>
+                <div class="kpi-content">
+                  <div class="kpi-label">TOTAL PETS</div>
+                  <div class="kpi-val">{{ total_pets }}</div>
+                  <div class="kpi-sub">{{ common_pct }}% Common, {{ specialized_pct }}% Specialized</div>
+                </div>
+              </div>
+              <div class="kpi-card kpi-yellow">
+                <div class="kpi-icon-wrap">⭐</div>
+                <div class="kpi-content">
+                  <div class="kpi-label">MATCHING ATTEMPTS</div>
+                  <div class="kpi-val">{{ matching_attempts }}</div>
+                  <div class="kpi-sub">Total calculation attempts</div>
+                </div>
+              </div>
+              <div class="kpi-card kpi-teal">
+                <div class="kpi-icon-wrap">🖼️</div>
+                <div class="kpi-content">
+                  <div class="kpi-label">ACTIVE PET LISTINGS</div>
+                  <div class="kpi-val">{{ active_listings }}</div>
+                  <div class="kpi-sub">with primary image</div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-layout">
+              <div class="dashboard-main-col">
+                <!-- Table 1: USER MATCHING PROFILE MANAGEMENT -->
+                <div class="table-section-card" id="user-profiles">
+                  <div class="table-card-header">
+                    <div class="table-card-title">
+                      <span>📋</span> USER MATCHING PROFILE MANAGEMENT
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Profile ID</th>
+                          <th>User Name</th>
+                          <th>Residence</th>
+                          <th>Budget</th>
+                          <th>Time Daily</th>
+                          <th>Experience</th>
+                          <th>Created At</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for p in profiles %}
+                          <tr>
+                            <td><strong>#{{ p.user_profile_id }}</strong></td>
+                            <td>{{ p.user.full_name|default:"Anonymous" }}</td>
+                            <td>{{ p.residence_type }}</td>
+                            <td>{{ p.budget_range }}</td>
+                            <td>{{ p.available_time_daily }}</td>
+                            <td>{{ p.pet_care_experience }}</td>
+                            <td>{{ p.created_at|date:"d.m.Y H:i" }}</td>
+                          </tr>
+                        {% empty %}
+                          <tr>
+                            <td colspan="7"
+                                style="text-align: center;
+                                       color: #94A3B8;
+                                       padding: 20px">ยังไม่มีข้อมูล Profile การค้นหา</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- Table 2: PET DATABASE MANAGEMENT -->
+                <div class="table-section-card" id="pet-management">
+                  <div class="table-card-header">
+                    <div class="table-card-title">
+                      <span>🐶</span> PET DATABASE MANAGEMENT (3NF Normalized)
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Pet ID</th>
+                          <th>Name</th>
+                          <th>Species</th>
+                          <th>Breed</th>
+                          <th>Care Needs</th>
+                          <th>Availability</th>
+                          <th>Photos</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for pet in pets_list %}
+                          <tr>
+                            <td><strong>P{{ pet.pet_id }}</strong></td>
+                            <td><strong>{{ pet.pet_name }}</strong></td>
+                            <td>{{ pet.species }}</td>
+                            <td>{{ pet.breed }}</td>
+                            <td style="max-width: 260px;
+                                       overflow: hidden;
+                                       text-overflow: ellipsis;
+                                       white-space: nowrap">{{ pet.species_care_needs }}</td>
+                            <td>
+                              <span class="badge-status {% if pet.general_availability == 'Common' %}badge-common{% else %}badge-spec{% endif %}">
+                                {{ pet.general_availability }}
+                              </span>
+                            </td>
+                            <td>📸 {{ pet.photos.count }}</td>
+                          </tr>
+                        {% empty %}
+                          <tr>
+                            <td colspan="7"
+                                style="text-align: center;
+                                       color: #94A3B8;
+                                       padding: 20px">ไม่มีข้อมูลสัตว์เลี้ยงในฐานข้อมูล</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- Table 3: RECENT MATCHING ATTEMPTS & RESULTS LOG -->
+                <div class="table-section-card" id="matching-results">
+                  <div class="table-card-header">
+                    <div class="table-card-title">
+                      <span>📊</span> RECENT MATCHING ATTEMPTS & RESULTS LOG
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Result ID</th>
+                          <th>Profile ID</th>
+                          <th>User Name</th>
+                          <th>Top Pet Recommended</th>
+                          <th>Matching Score</th>
+                          <th>Timestamp</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for res in recent_attempts %}
+                          <tr>
+                            <td><strong>RES-{{ res.result_id }}</strong></td>
+                            <td>#{{ res.user_profile.user_profile_id }}</td>
+                            <td>{{ res.user_profile.user.full_name|default:"Guest" }}</td>
+                            <td>
+                              {% with top_rec=res.recommendations.first %}
+                                {% if top_rec %}
+                                  <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="{{ top_rec.pet.primary_photo }}"
+                                         style="width: 28px;
+                                                height: 28px;
+                                                border-radius: 6px;
+                                                object-fit: cover">
+                                    <span>{{ top_rec.pet.pet_name }} ({{ top_rec.pet.breed }})</span>
+                                  </div>
+                                {% else %}
+                                  -
+                                {% endif %}
+                              {% endwith %}
+                            </td>
+                            <td>
+                              <div class="score-progress-wrap">
+                                <div class="score-bar-mini">
+                                  <div class="score-bar-fill-mini"
+                                       style="width: {{ res.overall_compatibility_score }}%"></div>
+                                </div>
+                                <strong>{{ res.overall_compatibility_score|floatformat:0 }}%</strong>
+                              </div>
+                            </td>
+                            <td>{{ res.timestamp|date:"d.m.Y H:i" }}</td>
+                          </tr>
+                        {% empty %}
+                          <tr>
+                            <td colspan="6"
+                                style="text-align: center;
+                                       color: #94A3B8;
+                                       padding: 20px">ยังไม่มีประวัติการจับคู่</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Sidebar Widgets -->
+              <div class="dashboard-side-col">
+                <div class="widget-box">
+                  <div class="widget-title">⚡ QUICK ACTIONS</div>
+                  <div class="action-btn-list">
+                    <a href="/admin/web/pet/add/" class="btn-quick-action">
+                      <span>➕</span> ADD NEW PET
+                    </a>
+                    <a href="/admin/auth/user/add/" class="btn-quick-action">
+                      <span>👤</span> REGISTER NEW ADMIN
+                    </a>
+                    <a href="/backoffice/" class="btn-quick-action">
+                      <span>🔄</span> REFRESH DASHBOARD
+                    </a>
+                    <a href="/"
+                       class="btn-quick-action"
+                       style="background: #EFF6FF;
+                              color: #2563EB">
+                      <span>🎯</span> OPEN MATCHING QUIZ
+                    </a>
+                  </div>
+                </div>
+                <div class="widget-box">
+                  <div class="widget-title">🛡️ DATABASE HEALTH</div>
+                  <div class="schema-status-box">
+                    <strong>✔ Schema: Normalized (3NF)</strong>
+                    <p style="margin-top: 4px; font-size: 0.76rem; color: #15803D;">
+                      MySQL connection is active. All foreign keys and tables follow 3NF normalization rules.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="dashboard-layout">
-          <div class="dashboard-main-col">
-            
-            <!-- Table 1: USER MATCHING PROFILE MANAGEMENT -->
-            <div class="table-section-card" id="user-profiles">
-              <div class="table-card-header">
-                <div class="table-card-title">
-                  <span>📋</span> USER MATCHING PROFILE MANAGEMENT
-                </div>
-              </div>
-              <div class="table-responsive">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Profile ID</th>
-                      <th>User Name</th>
-                      <th>Residence</th>
-                      <th>Budget</th>
-                      <th>Time Daily</th>
-                      <th>Experience</th>
-                      <th>Created At</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for p in profiles %}
-                    <tr>
-                      <td><strong>#{{ p.user_profile_id }}</strong></td>
-                      <td>{{ p.user.full_name|default:"Anonymous" }}</td>
-                      <td>{{ p.residence_type }}</td>
-                      <td>{{ p.budget_range }}</td>
-                      <td>{{ p.available_time_daily }}</td>
-                      <td>{{ p.pet_care_experience }}</td>
-                      <td>{{ p.created_at|date:"d.m.Y H:i" }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                      <td colspan="7" style="text-align: center; color: #94A3B8; padding: 20px;">ยังไม่มีข้อมูล Profile การค้นหา</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Table 2: PET DATABASE MANAGEMENT -->
-            <div class="table-section-card" id="pet-management">
-              <div class="table-card-header">
-                <div class="table-card-title">
-                  <span>🐶</span> PET DATABASE MANAGEMENT (3NF Normalized)
-                </div>
-              </div>
-              <div class="table-responsive">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Pet ID</th>
-                      <th>Name</th>
-                      <th>Species</th>
-                      <th>Breed</th>
-                      <th>Care Needs</th>
-                      <th>Availability</th>
-                      <th>Photos</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for pet in pets_list %}
-                    <tr>
-                      <td><strong>P{{ pet.pet_id }}</strong></td>
-                      <td><strong>{{ pet.pet_name }}</strong></td>
-                      <td>{{ pet.species }}</td>
-                      <td>{{ pet.breed }}</td>
-                      <td style="max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                        {{ pet.species_care_needs }}
-                      </td>
-                      <td>
-                        <span class="badge-status {% if pet.general_availability == 'Common' %}badge-common{% else %}badge-spec{% endif %}">
-                          {{ pet.general_availability }}
-                        </span>
-                      </td>
-                      <td>📸 {{ pet.photos.count }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                      <td colspan="7" style="text-align: center; color: #94A3B8; padding: 20px;">ไม่มีข้อมูลสัตว์เลี้ยงในฐานข้อมูล</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Table 3: RECENT MATCHING ATTEMPTS & RESULTS LOG -->
-            <div class="table-section-card" id="matching-results">
-              <div class="table-card-header">
-                <div class="table-card-title">
-                  <span>📊</span> RECENT MATCHING ATTEMPTS & RESULTS LOG
-                </div>
-              </div>
-              <div class="table-responsive">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Result ID</th>
-                      <th>Profile ID</th>
-                      <th>User Name</th>
-                      <th>Top Pet Recommended</th>
-                      <th>Matching Score</th>
-                      <th>Timestamp</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for res in recent_attempts %}
-                    <tr>
-                      <td><strong>RES-{{ res.result_id }}</strong></td>
-                      <td>#{{ res.user_profile.user_profile_id }}</td>
-                      <td>{{ res.user_profile.user.full_name|default:"Guest" }}</td>
-                      <td>
-                        {% with top_rec=res.recommendations.first %}
-                          {% if top_rec %}
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                              <img src="{{ top_rec.pet.primary_photo }}" style="width: 28px; height: 28px; border-radius: 6px; object-fit: cover;">
-                              <span>{{ top_rec.pet.pet_name }} ({{ top_rec.pet.breed }})</span>
-                            </div>
-                          {% else %}
-                            -
-                          {% endif %}
-                        {% endwith %}
-                      </td>
-                      <td>
-                        <div class="score-progress-wrap">
-                          <div class="score-bar-mini">
-                            <div class="score-bar-fill-mini" style="width: {{ res.overall_compatibility_score }}%;"></div>
-                          </div>
-                          <strong>{{ res.overall_compatibility_score|floatformat:0 }}%</strong>
-                        </div>
-                      </td>
-                      <td>{{ res.timestamp|date:"d.m.Y H:i" }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                      <td colspan="6" style="text-align: center; color: #94A3B8; padding: 20px;">ยังไม่มีประวัติการจับคู่</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Right Sidebar Widgets -->
-          <div class="dashboard-side-col">
-            
-            <div class="widget-box">
-              <div class="widget-title">⚡ QUICK ACTIONS</div>
-              <div class="action-btn-list">
-                <a href="/admin/web/pet/add/" class="btn-quick-action">
-                  <span>➕</span> ADD NEW PET
-                </a>
-                <a href="/admin/auth/user/add/" class="btn-quick-action">
-                  <span>👤</span> REGISTER NEW ADMIN
-                </a>
-                <a href="/backoffice/" class="btn-quick-action">
-                  <span>🔄</span> REFRESH DASHBOARD
-                </a>
-                <a href="/" class="btn-quick-action" style="background: #EFF6FF; color: #2563EB;">
-                  <span>🎯</span> OPEN MATCHING QUIZ
-                </a>
-              </div>
-            </div>
-
-            <div class="widget-box">
-              <div class="widget-title">🛡️ DATABASE HEALTH</div>
-              <div class="schema-status-box">
-                <strong>✔ Schema: Normalized (3NF)</strong>
-                <p style="margin-top: 4px; font-size: 0.76rem; color: #15803D;">
-                  MySQL connection is active. All foreign keys and tables follow 3NF normalization rules.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
-</div>
-
-</body>
+  </body>
 </html>
