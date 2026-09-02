@@ -749,7 +749,7 @@
         <span style="font-size: 0.88rem; color: #64748B; font-weight: 500;">User Journey</span>
         {% if request.user.is_authenticated and request.user.is_staff %}
           <a href="/backoffice/" class="nav-btn secondary">⚙️ Admin Backoffice</a>
-          <a href="/admin/logout/?next=/" class="nav-btn secondary" style="color: #EF4444; border-color: #FCA5A5; font-size: 0.82rem;">🚪 ออกจากระบบ ({{ request.user.username }})</a>
+          <a href="/logout/" class="nav-btn secondary" style="color: #EF4444; border-color: #FCA5A5; font-size: 0.82rem;">🚪 ออกจากระบบ ({{ request.user.username }})</a>
         {% else %}
           <a href="/admin/login/?next=/backoffice/" class="nav-btn secondary" title="เฉพาะผู้ดูแลระบบ" style="font-size: 0.82rem; color: #64748B;">🔒 เข้าสู่ระบบ Admin</a>
         {% endif %}

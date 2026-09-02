@@ -1,7 +1,8 @@
 import json
+from django.contrib.auth import logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from web.models import Pet, PetPhoto, Result, TopPetRecommendation, User, UserMatchingProfile
 from web.services import calculate_pet_matches
@@ -119,3 +120,8 @@ def pet_detail_api(request, pet_id):
         "general_availability": pet.general_availability,
         "photos": photos if photos else [pet.primary_photo],
     })
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
