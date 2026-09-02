@@ -28,9 +28,20 @@ def api_match_view(request):
             else:
                 data = request.POST.dict()
 
-            full_name = data.get("full_name", "ผู้ใช้งานทั่วไป (Guest)")
-            email = data.get("email", "guest@petmatch.local")
-            phone = data.get("phone", "08x-xxx-xxxx")
+            from django.utils import timezone
+            full_name = data.get("full_name", "").strip()
+            if not full_name:
+                if request.user.is_authenticated:
+                    full_name = request.user.get_full_name() or request.user.username
+                else:
+                    full_name = "ผู้ใช้งานทั่วไป (Guest)"
+
+            email = data.get("email", "").strip()
+            if not email:
+                now_str = timezone.now().strftime("%Y%m%d_%H%M%S_%f")
+                email = f"user_{now_str}@petmatch.local"
+
+            phone = data.get("phone", "").strip() or "-"
 
             # Create or get user
             user, _ = User.objects.get_or_create(
