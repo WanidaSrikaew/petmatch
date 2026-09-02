@@ -15,3 +15,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PetMatch.settings")
 
 application = get_wsgi_application()
 app = application
+
+# Auto-migrate and seed if running in Vercel serverless environment
+if "VERCEL" in os.environ:
+    try:
+        from django.core.management import call_command
+        call_command("migrate", interactive=False)
+        call_command("seed_pet_data")
+    except Exception as e:
+        print("Vercel auto-init notice:", e)

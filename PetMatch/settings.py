@@ -82,9 +82,10 @@ WSGI_APPLICATION = "PetMatch.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-USE_MYSQL = os.environ.get("USE_MYSQL", "True").lower() in ("true", "1", "yes")
+IS_VERCEL = "VERCEL" in os.environ
+USE_MYSQL = os.environ.get("USE_MYSQL", "False" if IS_VERCEL else "True").lower() in ("true", "1", "yes")
 
-if USE_MYSQL:
+if USE_MYSQL and not IS_VERCEL:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
@@ -100,10 +101,11 @@ if USE_MYSQL:
         }
     }
 else:
+    db_path = "/tmp/db.sqlite3" if IS_VERCEL else (BASE_DIR / "db.sqlite3")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "NAME": db_path,
         }
     }
 
