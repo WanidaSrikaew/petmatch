@@ -17,7 +17,7 @@ class Command(BaseCommand):
                 "species_care_needs": "หวีและสางขนทุกวัน ตัดเล็มกับช่างทุก 2 เดือน เพื่อไม่ให้ขนพันกัน, เล่นและออกกำลังกายแต่พอดี เลี่ยงการกระโดดสูง",
                 "special_requirements": "ตรวจสุขภาพประจำปี ระวังเรื่องข้อเข่าและโรคจอประสาทตาเสื่อม (Progressive Retinal Atrophy: PRA)",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1594149929911-78975a43d4f5?auto=format&fit=crop&w=800&q=80",
+                "photo_url": "/static/images/poodle.png",
                 "photo_desc": "พุดเดิ้ลทอยสีครีม ขนฟู แสนรู้และเป็นมิตร"
             },
             {
@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ควบคุมน้ำหนักและพาออกกำลังกายประจำ แปรงฟันให้ทุกวันเพราะฟันเล็กเบียดง่าย เสี่ยงโรคเหงือก แปรงขนสัปดาห์ละ 2-3 ครั้ง",
                 "special_requirements": "เฝ้าระวังสุขภาพหลอดลมตีบ ลมชัก ตาแห้ง ต้อกระจก หรือท่อน้ำตาอุดตัน หลีกเลี่ยงอากาศร้อนจัด",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
+                "photo_url": "/static/images/pomeranian.png",
                 "photo_desc": "ปอมเมอเรเนียนสีส้ม ขนฟูนุ่ม ตาสดใส"
             },
             {
@@ -43,7 +43,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ตัดขนสั้นและแปรงขนทุกวัน ระวังเรื่องอากาศร้อนและการหายใจ ไม่ควรให้ออกกำลังกายหนักเกินไป",
                 "special_requirements": "ตรวจสุขภาพตาเป็นประจำเนื่องจากตาโตโปน ระวังต้อกระจก จอประสาทตาลอก และกระจกตาแห้ง",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=800&q=80",
+                "photo_url": "/static/images/shihtzu.jpg",
                 "photo_desc": "ชิสุน่ารัก ตาโต อ่อนโยน เข้ากับทุกคนได้ดี"
             },
             {
@@ -56,7 +56,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ออกกำลังกายสม่ำเสมอ แนะนำว่ายน้ำสัปดาห์ละ 2 ครั้งเพื่อลดแรงกระแทกข้อต่อ แปรงขนสม่ำเสมอและทำความสะอาดใบหู",
                 "special_requirements": "ระวังอาการแพ้ทางผิวหนังจากอาหารหรือเกสรดอกไม้ เฝ้าระวังข้อสะโพกเสื่อม (Hip dysplasia) และโรคหัวใจ",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80",
+                "photo_url": "/static/images/golden.png",
                 "photo_desc": "โกลเด้น รีทรีฟเวอร์ ขนสีทอง ยิ้มหวาน ใจดีและเป็นมิตร"
             },
             {
@@ -69,7 +69,7 @@ class Command(BaseCommand):
                 "species_care_needs": "แปรงขนและดูดฝุ่นทุกวันเพราะผลัดขนบ่อย พาออกกำลังกายหนักเพื่อระบายพลังงาน ไม่ควรเลี้ยงร่วมกับสัตว์เล็กเพราะสัญชาตญาณนักล่า",
                 "special_requirements": "อยู่ในที่อากาศถ่ายเทสะดวกหรือห้องแอร์ เฝ้าระวังข้อสะโพกเคลื่อน โรคภูมิแพ้ผิวหนัง และโรคตา",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1563889958769-14a51eb58bb1?auto=format&fit=crop&w=800&q=80",
+                "photo_url": "/static/images/husky.png",
                 "photo_desc": "ไซบีเรียน ฮัสกี้ ตาฟ้าคม ขนเทาขาว พลังงานเต็มเปี่ยม"
             }
         ]
