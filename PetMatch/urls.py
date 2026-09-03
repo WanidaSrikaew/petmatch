@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from django.views.static import serve
 from web import views
 
 urlpatterns = [
@@ -9,4 +11,9 @@ urlpatterns = [
     path("api/match/", views.api_match_view, name="api_match"),
     path("api/pet/<int:pet_id>/", views.pet_detail_api, name="api_pet_detail"),
     path("logout/", views.logout_view, name="logout"),
+    re_path(
+        r"^static/(?P<path>.*)$",
+        serve,
+        {"document_root": settings.BASE_DIR / "static"},
+    ),
 ]
