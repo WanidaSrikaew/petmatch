@@ -22,5 +22,6 @@ if "VERCEL" in os.environ:
         from django.core.management import call_command
         call_command("migrate", interactive=False)
         call_command("seed_pet_data")
+        call_command("collectstatic", interactive=False)
     except Exception as e:
         print("Vercel auto-init notice:", e)
