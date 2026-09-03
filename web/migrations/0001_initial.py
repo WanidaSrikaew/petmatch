@@ -164,7 +164,11 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     "recommendation_id",
-                    models.AutoField(primary_key=True, serialize=False),
+                    models.AutoField(
+                        db_column="Top_Pet_Recommendation",
+                        primary_key=True,
+                        serialize=False,
+                    ),
                 ),
                 ("rank", models.IntegerField(default=1, verbose_name="Rank (1-3)")),
                 ("matching_reason", models.TextField(verbose_name="Matching Reason")),

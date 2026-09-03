@@ -142,7 +142,9 @@ class Result(models.Model):
 
 
 class TopPetRecommendation(models.Model):
-    recommendation_id = models.AutoField(primary_key=True)
+    recommendation_id = models.AutoField(
+        primary_key=True, db_column="Top_Pet_Recommendation"
+    )
     result = models.ForeignKey(
         Result,
         on_delete=models.CASCADE,
