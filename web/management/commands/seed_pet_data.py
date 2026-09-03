@@ -18,7 +18,7 @@ class Command(BaseCommand):
                 "species_care_needs": "หวีและสางขนทุกวัน ตัดเล็มกับช่างทุก 2 เดือน เพื่อไม่ให้ขนพันกัน, เล่นและออกกำลังกายแต่พอดี เลี่ยงการกระโดดสูง",
                 "special_requirements": "ตรวจสุขภาพประจำปี ระวังเรื่องข้อเข่าและโรคจอประสาทตาเสื่อม (Progressive Retinal Atrophy: PRA)",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/poodle.png",
                 "photo_desc": "พุดเดิ้ลทอยสีครีม ขนฟู แสนรู้และเป็นมิตร",
             },
             {
@@ -31,7 +31,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ควบคุมน้ำหนักและพาออกกำลังกายประจำ แปรงฟันให้ทุกวันเพราะฟันเล็กเบียดง่าย เสี่ยงโรคเหงือก แปรงขนสัปดาห์ละ 2-3 ครั้ง",
                 "special_requirements": "เฝ้าระวังสุขภาพหลอดลมตีบ ลมชัก ตาแห้ง ต้อกระจก หรือท่อน้ำตาอุดตัน หลีกเลี่ยงอากาศร้อนจัด",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/pomeranian.png",
                 "photo_desc": "ปอมเมอเรเนียนสีส้ม ขนฟูนุ่ม ตาสดใส",
             },
             {
@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ตัดขนสั้นและแปรงขนทุกวัน ระวังเรื่องอากาศร้อนและการหายใจ ไม่ควรให้ออกกำลังกายหนักเกินไป",
                 "special_requirements": "ตรวจสุขภาพตาเป็นประจำเนื่องจากตาโตโปน ระวังต้อกระจก จอประสาทตาลอก และกระจกตาแห้ง",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/shihtzu.jpg",
                 "photo_desc": "ชิสุน่ารัก ตาโต อ่อนโยน เข้ากับทุกคนได้ดี",
             },
             {
@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ออกกำลังกายสม่ำเสมอ แนะนำว่ายน้ำสัปดาห์ละ 2 ครั้งเพื่อลดแรงกระแทกข้อต่อ แปรงขนสม่ำเสมอและทำความสะอาดใบหู",
                 "special_requirements": "ระวังอาการแพ้ทางผิวหนังจากอาหารหรือเกสรดอกไม้ เฝ้าระวังข้อสะโพกเสื่อม (Hip dysplasia) และโรคหัวใจ",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/golden.png",
                 "photo_desc": "โกลเด้น รีทรีฟเวอร์ ขนสีทอง ยิ้มหวาน ใจดีและเป็นมิตร",
             },
             {
@@ -70,7 +70,7 @@ class Command(BaseCommand):
                 "species_care_needs": "แปรงขนและดูดฝุ่นทุกวันเพราะผลัดขนบ่อย พาออกกำลังกายหนักเพื่อระบายพลังงาน ไม่ควรเลี้ยงร่วมกับสัตว์เล็กเพราะสัญชาตญาณนักล่า",
                 "special_requirements": "อยู่ในที่อากาศถ่ายเทสะดวกหรือห้องแอร์ เฝ้าระวังข้อสะโพกเคลื่อน โรคภูมิแพ้ผิวหนัง และโรคตา",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1590419690008-905895e8fe0d?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/husky.png",
                 "photo_desc": "ไซบีเรียน ฮัสกี้ ตาฟ้าคม ขนเทาขาว พลังงานเต็มเปี่ยม",
             },
             # --- 5 Cat Breeds ---
@@ -84,7 +84,7 @@ class Command(BaseCommand):
                 "species_care_needs": "แปรงขนสัปดาห์ละครั้งเพราะขนสั้นดูแลง่าย จัดของเล่นปีนป่ายเพื่อระบายพลังงาน อาจต้องทำความคุ้นเคยก่อนคลุกคลีกับเด็กเล็ก",
                 "special_requirements": "ต้องการพื้นที่ปีนป่าย ระวังโรคทางเดินหายใจและความเครียดหากถูกปล่อยให้อยู่ลำพังนาน",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1513245543132-31f507417b26?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/siamese.png",
                 "photo_desc": "แมววิเชียรมาศ ลำตัวครีมแต้มสีเข้ม ตาฟ้าสดใส ปราดเปรียวสง่างาม",
             },
             {
@@ -97,7 +97,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องดูแลและแปรงขนหนาทุกวันเพื่อป้องกันขนพันกัน ให้อาหารที่มีโปรตีนคุณภาพสูงเพื่อดูแลกล้ามเนื้อ และต้องการพื้นที่กว้างขวาง",
                 "special_requirements": "เฝ้าระวังโรคกล้ามเนื้อหัวใจหนาตัว (HCM) ปัญหากระดูกข้อสะโพกเนื่องจากตัวใหญ่ และระวังเรื่องก้อนขนอุดตัน (Hairball)",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/mainecoon.png",
                 "photo_desc": "แมวเมนคูน ขนหนาสีลายเสือ แผงคอฟูสง่างาม หูตั้งมีขนพู่",
             },
             {
@@ -110,7 +110,7 @@ class Command(BaseCommand):
                 "species_care_needs": "แปรงขนสม่ำเสมอ จัดสิ่งแวดล้อมให้ปีนป่ายแบบไม่สูงชันเพื่อป้องกันกระดูกสันหลัง ระวังเรื่องการควบคุมน้ำหนัก",
                 "special_requirements": "ระวังปัญหากระดูกสันหลังและข้อต่อ (Lordosis) หลีกเลี่ยงการให้กระโดดจากที่สูงชัน อาจต้องทำความคุ้นเคยก่อนคลุกคลีกับเด็กเล็ก",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/munchkin.png",
                 "photo_desc": "แมวมันช์กิ้น ขาสั้นกุด ลำตัวยาว หางฟู ตาโตน่ารัก",
             },
             {
@@ -123,7 +123,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องดูแลตัดแต่งและแปรงขนทุกวันเพื่อไม่ให้ขนพันกัน ทำความสะอาดคราบน้ำตาบริเวณร่องจมูกและดวงตาทุกวัน",
                 "special_requirements": "ระวังโรคระบบทางเดินหายใจเนื่องจากหน้าแบน โรคถุงน้ำที่ไต (PKD) และโรคก้อนขนอุดตันในทางเดินอาหาร",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/persian.png",
                 "photo_desc": "แมวเปอร์เซีย ขนยาวฟูสีเทาอ่อน หน้าแบน ตาโตกลมหวาน",
             },
             {
@@ -136,7 +136,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องดูแลแปรงขนหนาทุกวันเพื่อให้ขนนุ่มสลวย ให้ความรักและการกอดเอาใจใส่ ไม่ควรปล่อยออกนอกบ้านตามลำพังเพราะไม่ป้องกันตัว",
                 "special_requirements": "ตรวจคัดกรองโรคกล้ามเนื้อหัวใจหนา (HCM) โรคนิ่วในระบบทางเดินปัสสาวะ และหมั่นแปรงขนเพื่อลดก้อนขน",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/ragdoll.png",
                 "photo_desc": "แมวแร็กดอลล์ ขนฟูสีครีมขาว หน้าแต้มสี ตาสีฟ้าเข้มสดใส",
             },
             # --- 3 Rabbit Breeds ---
@@ -150,7 +150,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ให้อาหารหญ้าแห้งทิโมธีเป็นหลัก 80% เสริมอาหารเม็ดและน้ำสะอาด แปรงขนสม่ำเสมอ จัดพื้นที่ให้กระโดดวิ่งเล่นอย่างปลอดภัย",
                 "special_requirements": "ตรวจเช็ดทำความสะอาดใบหูตกเป็นประจำเพื่อป้องกันไรหูและการอักเสบ ระวังโรคทางเดินอาหารหยุดทำงาน (GI Stasis)",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/minilop.png",
                 "photo_desc": "กระต่ายมินิลอป หูตก ตัวอ้วนกลม ลายสีน้ำตาลขาว น่ารักสดใส",
             },
             {
@@ -163,7 +163,7 @@ class Command(BaseCommand):
                 "species_care_needs": "เน้นหญ้าทิโมธีคุณภาพดี ไม่จำเป็นต้องแปรงขนบ่อยมากเพราะขนสั้นแน่น ใช้ผ้าชุบน้ำหมาดๆ ลูบทำความสะอาด ระวังเรื่องฝ่าเท้าอักเสบเพราะขนเท้าสั้น",
                 "special_requirements": "ปูพื้นกรงหรือพื้นคอกด้วยวัสดุนุ่มเพื่อป้องกันแผลกดทับที่ฝ่าเท้า (Sore Hocks) ระวังเรื่องอุณหภูมิห้องร้อนจัด",
                 "general_availability": "Common",
-                "photo_url": "https://images.unsplash.com/photo-1518796745738-41048802f99a?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/minirex.png",
                 "photo_desc": "กระต่ายมินิเร็กซ์ ขนสั้นกำมะหยี่สีขาวแต้มน้ำตาล หูตั้ง ตาโตกลม",
             },
             {
@@ -176,7 +176,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องการคอกหรือพื้นที่เลี้ยงขนาดใหญ่มากเพื่อการเคลื่อนไหว ให้อาหารหญ้าและผักสดในปริมาณที่เพียงพอกับน้ำหนักตัว แปรงขนสม่ำเสมอ",
                 "special_requirements": "ระวังอาการตกใจตื่นกลัวเพราะแรงกระโดดและกรงเล็บอาจทำให้ผู้เลี้ยงหรือตัวกระต่ายเองบาดเจ็บได้ ตรวจดูแลความสะอาดใบหูเป็นประจำ",
                 "general_availability": "Specialized",
-                "photo_url": "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=600&q=80",
+                "photo_url": "/static/images/frenchlop.png",
                 "photo_desc": "กระต่ายเฟรนช์ลอป ตัวใหญ่ขนฟู หูยาวตกหนา สีน้ำตาลครีมขาว",
             },
         ]

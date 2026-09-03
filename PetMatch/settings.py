@@ -148,6 +148,8 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = []
+if (BASE_DIR / "static").exists():
+    STATICFILES_DIRS.append(BASE_DIR / "static")
 if (BASE_DIR / "statics").exists():
     STATICFILES_DIRS.append(BASE_DIR / "statics")
 
