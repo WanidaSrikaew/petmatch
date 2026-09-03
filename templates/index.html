@@ -792,184 +792,184 @@
               <div class="panel-title">
                 <span>🎯</span> MATCHING QUIZ: YOUR LIFESTYLE
               </div>
-              <!-- Progress -->
-              <div class="quiz-progress-wrap">
-                <div class="progress-bar-bg">
-                  <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+                <!-- Progress -->
+                <div class="quiz-progress-wrap">
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 0%;"></div>
+                  </div>
+                  <div class="progress-label" id="quiz-progress-text">Step 0 of 6 (0%) - เริ่มเลือกคำตอบข้อแรก</div>
                 </div>
-                <div class="progress-label" id="quiz-progress-text">Step 1 of 5 (25%)</div>
-              </div>
-              <form id="matchingQuizForm">
-                <!-- Question 1: Pet Type Preference -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">1</span> What kind of pet? (ชนิดสัตว์เลี้ยงที่คุณสนใจ)
-                  </div>
-                  <div class="choices-row" id="choice-pet-type">
-                    <div class="choice-card" data-value="Dog">
-                      <span class="icon">🐶</span>
-                      สุนัข (Dog)
-                      <span class="sub">เพื่อนซื่อสัตย์ พลังงานสดใส</span>
+                <form id="matchingQuizForm">
+                  <!-- Question 1: Pet Type Preference -->
+                  <div class="quiz-step" id="step-1">
+                    <div class="question-title">
+                      <span class="question-badge">1</span> What kind of pet? (ชนิดสัตว์เลี้ยงที่คุณสนใจ)
                     </div>
-                    <div class="choice-card" data-value="Cat">
-                      <span class="icon">🐱</span>
-                      แมว (Cat)
-                      <span class="sub">รักสงบ ขี้อ้อน เป็นอิสระ</span>
-                    </div>
-                    <div class="choice-card" data-value="Rabbit">
-                      <span class="icon">🐰</span>
-                      กระต่าย (Rabbit)
-                      <span class="sub">เงียบสงบ ตัวนุ่ม เลี้ยงง่าย</span>
-                    </div>
-                    <div class="choice-card selected" data-value="Any">
-                      <span class="icon">🐾</span>
-                      ได้ทั้งหมด (All)
-                      <span class="sub">เลือกที่เข้ากับวิถีชีวิตที่สุด</span>
-                    </div>
-                  </div>
-                  <input type="hidden"
-                         name="preferred_pet_type"
-                         id="preferred_pet_type"
-                         value="Any">
-                </div>
-                <!-- Question 2: Where do you live? -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">2</span> Where do you live? (สถานที่พักอาศัย)
-                  </div>
-                  <div class="choices-row" id="choice-residence">
-                    <div class="choice-card selected" data-value="Condo">
-                      <span class="icon">🏢</span>
-                      Condo
-                      <span class="sub">(with balcony / พื้นที่จำกัด)</span>
-                    </div>
-                    <div class="choice-card" data-value="House">
-                      <span class="icon">🏡</span>
-                      House
-                      <span class="sub">(with yard / มีสวนวิ่งเล่น)</span>
-                    </div>
-                  </div>
-                  <input type="hidden" name="residence_type" id="residence_type" value="Condo">
-                </div>
-                <!-- Question 3: Space for Pet? -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">3</span> Space for Pet? (พื้นที่สำหรับสัตว์เลี้ยง)
-                  </div>
-                  <div class="choices-row" id="choice-space">
-                    <div class="choice-card selected" data-value="Compact">
-                      <span class="icon">📏</span>
-                      Compact
-                      <span class="sub">กะทัดรัด/ในห้อง</span>
-                    </div>
-                    <div class="choice-card" data-value="Medium">
-                      <span class="icon">📐</span>
-                      Medium
-                      <span class="sub">ปานกลาง/ลานบ้าน</span>
-                    </div>
-                    <div class="choice-card" data-value="Large">
-                      <span class="icon">🌳</span>
-                      Large Yard
-                      <span class="sub">สวนกว้างวิ่งเล่น</span>
-                    </div>
-                  </div>
-                  <input type="hidden" name="space_size" id="space_size" value="Compact">
-                </div>
-                <!-- Question 4: Monthly Budget? -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">4</span> Monthly Budget? (งบประมาณต่อเดือน)
-                  </div>
-                  <div class="slider-wrap">
-                    <input type="range"
-                           min="500"
-                           max="8000"
-                           step="100"
-                           value="2000"
-                           class="custom-slider"
-                           id="budgetRangeInput"
-                           name="monthly_budget">
-                    <span class="budget-display" id="budgetDisplay">2,000 บาท/เดือน</span>
-                  </div>
-                </div>
-                <!-- Question 5: Daily Available Time & Lifestyle? -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">5</span> Time & Lifestyle? (เวลาและการทำงาน)
-                  </div>
-                  <div class="choices-row" id="choice-time">
-                    <div class="choice-card selected" data-value="WFH">
-                      <span class="icon">💻</span>
-                      Work From Home
-                      <span class="sub">อยู่บ้านเป็นหลัก</span>
-                    </div>
-                    <div class="choice-card" data-value="1-2 hours">
-                      <span class="icon">⏰</span>
-                      1-2 Hours
-                      <span class="sub">มีเวลาปานกลาง</span>
-                    </div>
-                    <div class="choice-card" data-value="Busy">
-                      <span class="icon">💼</span>
-                      Busy / Out
-                      <span class="sub">ออกนอกบ้านบ่อย</span>
-                    </div>
-                  </div>
-                  <input type="hidden" name="available_time" id="available_time" value="WFH">
-                </div>
-                <!-- Question 6: Experience & Allergies -->
-                <div class="quiz-step">
-                  <div class="question-title">
-                    <span class="question-badge">6</span> Experience & Shedding? (ประสบการณ์และภูมิแพ้)
-                  </div>
-                  <!-- Sub-Question A: Experience -->
-                  <div style="margin-bottom: 14px;">
-                    <div style="font-size: 0.84rem;
-                                font-weight: 600;
-                                color: #475569;
-                                margin-bottom: 8px">🐾 ประสบการณ์การเลี้ยงสัตว์เลี้ยง:</div>
-                    <div class="choices-row" id="choice-experience">
-                      <div class="choice-card selected" data-value="New">
-                        <span class="icon">🌱</span>
-                        มือใหม่หัดเลี้ยง (Beginner)
-                        <span class="sub">ต้องการพันธุ์ฝึกง่าย ดูแลง่าย</span>
+                    <div class="choices-row" id="choice-pet-type">
+                      <div class="choice-card" data-value="Dog">
+                        <span class="icon">🐶</span>
+                        สุนัข (Dog)
+                        <span class="sub">เพื่อนซื่อสัตย์ พลังงานสดใส</span>
                       </div>
-                      <div class="choice-card" data-value="Experienced">
-                        <span class="icon">⭐</span>
-                        มีประสบการณ์ (Experienced)
-                        <span class="sub">พร้อมรับมือทุกนิสัยและพลังงาน</span>
+                      <div class="choice-card" data-value="Cat">
+                        <span class="icon">🐱</span>
+                        แมว (Cat)
+                        <span class="sub">รักสงบ ขี้อ้อน เป็นอิสระ</span>
+                      </div>
+                      <div class="choice-card" data-value="Rabbit">
+                        <span class="icon">🐰</span>
+                        กระต่าย (Rabbit)
+                        <span class="sub">เงียบสงบ ตัวนุ่ม เลี้ยงง่าย</span>
+                      </div>
+                      <div class="choice-card" data-value="Any">
+                        <span class="icon">🐾</span>
+                        ได้ทั้งหมด (All)
+                        <span class="sub">เลือกที่เข้ากับวิถีชีวิตที่สุด</span>
                       </div>
                     </div>
-                    <input type="hidden" name="experience" id="experience" value="New">
+                    <input type="hidden"
+                           name="preferred_pet_type"
+                           id="preferred_pet_type"
+                           value="">
                   </div>
-                  <!-- Sub-Question B: Allergies -->
-                  <div>
-                    <div style="font-size: 0.84rem;
-                                font-weight: 600;
-                                color: #475569;
-                                margin-bottom: 8px">🤧 ความกังวลเรื่องภูมิแพ้และการผลัดขน:</div>
-                    <div class="choices-row" id="choice-allergy">
-                      <div class="choice-card selected" data-value="No">
-                        <span class="icon">✨</span>
-                        ไม่แพ้ขน (Normal)
-                        <span class="sub">รับได้ทุกสายพันธุ์ ผลัดขนได้</span>
+                  <!-- Question 2: Where do you live? -->
+                  <div class="quiz-step" id="step-2">
+                    <div class="question-title">
+                      <span class="question-badge">2</span> Where do you live? (สถานที่พักอาศัย)
+                    </div>
+                    <div class="choices-row" id="choice-residence">
+                      <div class="choice-card" data-value="Condo">
+                        <span class="icon">🏢</span>
+                        Condo
+                        <span class="sub">(with balcony / พื้นที่จำกัด)</span>
                       </div>
-                      <div class="choice-card" data-value="Yes">
-                        <span class="icon">🤧</span>
-                        แพ้ขนง่าย (Low Shedding)
-                        <span class="sub">ต้องการขนชั้นเดียว ไม่ผลัดขน</span>
+                      <div class="choice-card" data-value="House">
+                        <span class="icon">🏡</span>
+                        House
+                        <span class="sub">(with yard / มีสวนวิ่งเล่น)</span>
                       </div>
                     </div>
-                    <input type="hidden" name="allergy_concern" id="allergy_concern" value="No">
+                    <input type="hidden" name="residence_type" id="residence_type" value="">
                   </div>
-                </div>
-                <!-- Match Button -->
-                <button type="button"
-                        class="btn-submit-match"
-                        id="btnMatchSubmit"
-                        onclick="submitMatchingQuiz()">
-                  <span>✨</span> ค้นหาสายพันธุ์ที่เหมาะสมที่สุด (Start Matching!)
-                </button>
-              </form>
+                  <!-- Question 3: Space for Pet? -->
+                  <div class="quiz-step" id="step-3">
+                    <div class="question-title">
+                      <span class="question-badge">3</span> Space for Pet? (พื้นที่สำหรับสัตว์เลี้ยง)
+                    </div>
+                    <div class="choices-row" id="choice-space">
+                      <div class="choice-card" data-value="Compact">
+                        <span class="icon">📏</span>
+                        Compact
+                        <span class="sub">กะทัดรัด/ในห้อง</span>
+                      </div>
+                      <div class="choice-card" data-value="Medium">
+                        <span class="icon">📐</span>
+                        Medium
+                        <span class="sub">ปานกลาง/ลานบ้าน</span>
+                      </div>
+                      <div class="choice-card" data-value="Large">
+                        <span class="icon">🌳</span>
+                        Large Yard
+                        <span class="sub">สวนกว้างวิ่งเล่น</span>
+                      </div>
+                    </div>
+                    <input type="hidden" name="space_size" id="space_size" value="">
+                  </div>
+                  <!-- Question 4: Monthly Budget? -->
+                  <div class="quiz-step" id="step-4">
+                    <div class="question-title">
+                      <span class="question-badge">4</span> Monthly Budget? (งบประมาณต่อเดือน)
+                    </div>
+                    <div class="slider-wrap">
+                      <input type="range"
+                             min="500"
+                             max="8000"
+                             step="100"
+                             value="2000"
+                             class="custom-slider"
+                             id="budgetRangeInput"
+                             name="monthly_budget">
+                      <span class="budget-display" id="budgetDisplay">2,000 บาท/เดือน</span>
+                    </div>
+                  </div>
+                  <!-- Question 5: Daily Available Time & Lifestyle? -->
+                  <div class="quiz-step" id="step-5">
+                    <div class="question-title">
+                      <span class="question-badge">5</span> Time & Lifestyle? (เวลาและการทำงาน)
+                    </div>
+                    <div class="choices-row" id="choice-time">
+                      <div class="choice-card" data-value="WFH">
+                        <span class="icon">💻</span>
+                        Work From Home
+                        <span class="sub">อยู่บ้านเป็นหลัก</span>
+                      </div>
+                      <div class="choice-card" data-value="1-2 hours">
+                        <span class="icon">⏰</span>
+                        1-2 Hours
+                        <span class="sub">มีเวลาปานกลาง</span>
+                      </div>
+                      <div class="choice-card" data-value="Busy">
+                        <span class="icon">💼</span>
+                        Busy / Out
+                        <span class="sub">ออกนอกบ้านบ่อย</span>
+                      </div>
+                    </div>
+                    <input type="hidden" name="available_time" id="available_time" value="">
+                  </div>
+                  <!-- Question 6: Experience & Allergies -->
+                  <div class="quiz-step" id="step-6">
+                    <div class="question-title">
+                      <span class="question-badge">6</span> Experience & Shedding? (ประสบการณ์และภูมิแพ้)
+                    </div>
+                    <!-- Sub-Question A: Experience -->
+                    <div style="margin-bottom: 14px;">
+                      <div style="font-size: 0.84rem;
+                                  font-weight: 600;
+                                  color: #475569;
+                                  margin-bottom: 8px">🐾 ประสบการณ์การเลี้ยงสัตว์เลี้ยง:</div>
+                      <div class="choices-row" id="choice-experience">
+                        <div class="choice-card" data-value="New">
+                          <span class="icon">🌱</span>
+                          มือใหม่หัดเลี้ยง (Beginner)
+                          <span class="sub">ต้องการพันธุ์ฝึกง่าย ดูแลง่าย</span>
+                        </div>
+                        <div class="choice-card" data-value="Experienced">
+                          <span class="icon">⭐</span>
+                          มีประสบการณ์ (Experienced)
+                          <span class="sub">พร้อมรับมือทุกนิสัยและพลังงาน</span>
+                        </div>
+                      </div>
+                      <input type="hidden" name="experience" id="experience" value="">
+                    </div>
+                    <!-- Sub-Question B: Allergies -->
+                    <div>
+                      <div style="font-size: 0.84rem;
+                                  font-weight: 600;
+                                  color: #475569;
+                                  margin-bottom: 8px">🤧 ความกังวลเรื่องภูมิแพ้และการผลัดขน:</div>
+                      <div class="choices-row" id="choice-allergy">
+                        <div class="choice-card" data-value="No">
+                          <span class="icon">✨</span>
+                          ไม่แพ้ขน (Normal)
+                          <span class="sub">รับได้ทุกสายพันธุ์ ผลัดขนได้</span>
+                        </div>
+                        <div class="choice-card" data-value="Yes">
+                          <span class="icon">🤧</span>
+                          แพ้ขนง่าย (Low Shedding)
+                          <span class="sub">ต้องการขนชั้นเดียว ไม่ผลัดขน</span>
+                        </div>
+                      </div>
+                      <input type="hidden" name="allergy_concern" id="allergy_concern" value="">
+                    </div>
+                  </div>
+                  <!-- Match Button -->
+                  <button type="button"
+                          class="btn-submit-match"
+                          id="btnMatchSubmit"
+                          onclick="submitMatchingQuiz()">
+                    <span>✨</span> ค้นหาสายพันธุ์ที่เหมาะสมที่สุด (Start Matching!)
+                  </button>
+                </form>
             </div>
             <!-- Right Panel: OUR FURRY FRIENDS -->
             <div class="panel-card panel-pets">
@@ -1123,11 +1123,47 @@
       </div>
     </div>
     <script>
+  // Dynamic Quiz Progress Calculation
+  function updateQuizProgress() {
+    const q1 = document.getElementById('preferred_pet_type').value !== '';
+    const q2 = document.getElementById('residence_type').value !== '';
+    const q3 = document.getElementById('space_size').value !== '';
+    const q4 = true; // Budget slider always has a value
+    const q5 = document.getElementById('available_time').value !== '';
+    const q6 = document.getElementById('experience').value !== '' && document.getElementById('allergy_concern').value !== '';
+
+    let answered = 0;
+    if (q1) answered++;
+    if (q2) answered++;
+    if (q3) answered++;
+    if (q4) answered++;
+    if (q5) answered++;
+    if (q6) answered++;
+
+    const total = 6;
+    const pct = Math.round((answered / total) * 100);
+
+    const progressBar = document.getElementById('quiz-progress-bar');
+    const progressText = document.getElementById('quiz-progress-text');
+
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (progressText) {
+      if (answered === 0 || (answered === 1 && !q1 && !q2 && !q3 && !q5 && !q6)) {
+        progressText.textContent = `Step 0 of ${total} (0%) - เริ่มเลือกคำตอบข้อแรก`;
+      } else if (answered === total) {
+        progressText.textContent = `Step ${answered} of ${total} (${pct}%) - ตอบครบทุกข้อแล้ว พร้อมค้นหา! 🎉`;
+      } else {
+        progressText.textContent = `Step ${answered} of ${total} (${pct}%)`;
+      }
+    }
+  }
+
   // Budget Slider
   const budgetInput = document.getElementById('budgetRangeInput');
   const budgetDisplay = document.getElementById('budgetDisplay');
   budgetInput.addEventListener('input', function() {
     budgetDisplay.textContent = Number(this.value).toLocaleString() + ' บาท/เดือน';
+    updateQuizProgress();
   });
 
   // Choice Cards Selection Logic
@@ -1141,6 +1177,7 @@
         cards.forEach(c => c.classList.remove('selected'));
         this.classList.add('selected');
         hiddenInput.value = this.dataset.value;
+        updateQuizProgress();
       });
     });
   }
@@ -1151,6 +1188,7 @@
   setupChoiceCards('choice-time', 'available_time');
   setupChoiceCards('choice-experience', 'experience');
   setupChoiceCards('choice-allergy', 'allergy_concern');
+  updateQuizProgress();
 
   // Species Filter in Right Panel
   function filterSpecies(type, btn) {
@@ -1216,6 +1254,44 @@
 
   // Submit Matching Quiz via AJAX
   async function submitMatchingQuiz() {
+    const q1 = document.getElementById('preferred_pet_type').value;
+    const q2 = document.getElementById('residence_type').value;
+    const q3 = document.getElementById('space_size').value;
+    const q5 = document.getElementById('available_time').value;
+    const exp = document.getElementById('experience').value;
+    const allergy = document.getElementById('allergy_concern').value;
+
+    if (!q1) {
+      alert('กรุณาเลือกคำตอบข้อที่ 1: ชนิดสัตว์เลี้ยงที่คุณสนใจ');
+      document.getElementById('step-1').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!q2) {
+      alert('กรุณาเลือกคำตอบข้อที่ 2: สถานที่พักอาศัย');
+      document.getElementById('step-2').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!q3) {
+      alert('กรุณาเลือกคำตอบข้อที่ 3: พื้นที่สำหรับสัตว์เลี้ยง');
+      document.getElementById('step-3').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!q5) {
+      alert('กรุณาเลือกคำตอบข้อที่ 5: เวลาและการทำงาน');
+      document.getElementById('step-5').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!exp) {
+      alert('กรุณาเลือกคำตอบข้อที่ 6: ประสบการณ์การเลี้ยงสัตว์เลี้ยง');
+      document.getElementById('step-6').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!allergy) {
+      alert('กรุณาเลือกคำตอบข้อที่ 6: ความกังวลเรื่องภูมิแพ้และการผลัดขน');
+      document.getElementById('step-6').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
     const btn = document.getElementById('btnMatchSubmit');
     btn.disabled = true;
     btn.innerHTML = '<span>⏳</span> กำลังประมวลผลความเข้ากันได้...';
