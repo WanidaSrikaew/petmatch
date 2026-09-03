@@ -1046,7 +1046,7 @@
             </div>
           </div>
           <!-- BOTTOM SECTION: MATCH RESULTS (TOP 3) -->
-          <div class="results-section" id="results-container">
+          <div class="results-section" id="results-container" style="display: none;">
             <div class="results-header">
               <div class="results-title">
                 <span>⭐</span> MATCH RESULTS (TOP 3) - YOUR TOP MATCHES
@@ -1311,8 +1311,10 @@
 
       const result = await response.json();
       if (result.status === 'success') {
+        const resContainer = document.getElementById('results-container');
+        resContainer.style.display = 'block';
         renderTop3Matches(result.recommendations);
-        document.getElementById('results-container').scrollIntoView({ behavior: 'smooth' });
+        resContainer.scrollIntoView({ behavior: 'smooth' });
       } else {
         alert('เกิดข้อผิดพลาด: ' + (result.message || 'ไม่สามารถประมวลผลได้'));
       }

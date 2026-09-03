@@ -10,11 +10,8 @@ from web.services import calculate_pet_matches
 
 def index_view(request):
     pets = Pet.objects.prefetch_related("photos").all()
-    recent_result = Result.objects.prefetch_related("recommendations__pet__photos").order_by("-timestamp").first()
-    
     context = {
         "pets": pets,
-        "recent_result": recent_result,
     }
     return render(request, "index.html", context)
 
