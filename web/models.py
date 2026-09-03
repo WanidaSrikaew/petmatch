@@ -5,7 +5,7 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=255, verbose_name="Full Name")
     email = models.CharField(max_length=255, unique=True, verbose_name="Email Address")
-    phone = models.CharField(max_length=20, verbose_name="Phone Number")
+    phone = models.CharField(max_length=20, blank=True, default="", verbose_name="Phone Number")
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name="Registration Date")
 
     class Meta:
@@ -29,12 +29,12 @@ class UserMatchingProfile(models.Model):
         verbose_name="User",
     )
     residence_type = models.CharField(max_length=255, verbose_name="Residence Type")
-    residence_details = models.TextField(verbose_name="Residence Details")
+    residence_details = models.TextField(blank=True, default="", verbose_name="Residence Details")
     budget_range = models.CharField(max_length=100, verbose_name="Monthly Budget Range")
     available_time_daily = models.CharField(max_length=100, verbose_name="Daily Available Time")
     pet_care_experience = models.CharField(max_length=100, verbose_name="Pet Care Experience")
     preferred_pet_type = models.CharField(max_length=255, verbose_name="Preferred Pet Type")
-    additional_preferences = models.TextField(blank=True, null=True, verbose_name="Additional Preferences")
+    additional_preferences = models.TextField(blank=True, default="", verbose_name="Additional Preferences")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
 
     class Meta:
@@ -60,8 +60,8 @@ class Pet(models.Model):
     pet_description = models.TextField(verbose_name="Pet Description")
     basic_info_summary = models.TextField(verbose_name="Basic Info Summary")
     detailed_bio = models.TextField(verbose_name="Detailed Bio / Personality")
-    species_care_needs = models.CharField(max_length=255, verbose_name="Species Care Needs")
-    special_requirements = models.TextField(verbose_name="Special Health & Care Requirements")
+    species_care_needs = models.TextField(blank=True, default="", verbose_name="Species Care Needs")
+    special_requirements = models.TextField(blank=True, default="", verbose_name="Special Health & Care Requirements")
     general_availability = models.CharField(
         max_length=50,
         choices=AVAILABILITY_CHOICES,
@@ -142,9 +142,7 @@ class Result(models.Model):
 
 
 class TopPetRecommendation(models.Model):
-    recommendation_id = models.AutoField(
-        primary_key=True, db_column="Top_Pet_Recommendation"
-    )
+    recommendation_id = models.AutoField(primary_key=True)
     result = models.ForeignKey(
         Result,
         on_delete=models.CASCADE,
