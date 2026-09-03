@@ -84,7 +84,7 @@ class Command(BaseCommand):
                 "species_care_needs": "แปรงขนสัปดาห์ละครั้งเพราะขนสั้นดูแลง่าย จัดของเล่นปีนป่ายเพื่อระบายพลังงาน อาจต้องทำความคุ้นเคยก่อนคลุกคลีกับเด็กเล็ก",
                 "special_requirements": "ต้องการพื้นที่ปีนป่าย ระวังโรคทางเดินหายใจและความเครียดหากถูกปล่อยให้อยู่ลำพังนาน",
                 "general_availability": "Common",
-                "photo_url": "/static/images/siamese.png",
+                "photo_url": "/static/images/006.jpg",
                 "photo_desc": "แมววิเชียรมาศ ลำตัวครีมแต้มสีเข้ม ตาฟ้าสดใส ปราดเปรียวสง่างาม",
             },
             {
@@ -97,7 +97,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องดูแลและแปรงขนหนาทุกวันเพื่อป้องกันขนพันกัน ให้อาหารที่มีโปรตีนคุณภาพสูงเพื่อดูแลกล้ามเนื้อ และต้องการพื้นที่กว้างขวาง",
                 "special_requirements": "เฝ้าระวังโรคกล้ามเนื้อหัวใจหนาตัว (HCM) ปัญหากระดูกข้อสะโพกเนื่องจากตัวใหญ่ และระวังเรื่องก้อนขนอุดตัน (Hairball)",
                 "general_availability": "Specialized",
-                "photo_url": "/static/images/mainecoon.png",
+                "photo_url": "/static/images/008.jpg",
                 "photo_desc": "แมวเมนคูน ขนหนาสีลายเสือ แผงคอฟูสง่างาม หูตั้งมีขนพู่",
             },
             {
@@ -123,7 +123,7 @@ class Command(BaseCommand):
                 "species_care_needs": "ต้องดูแลตัดแต่งและแปรงขนทุกวันเพื่อไม่ให้ขนพันกัน ทำความสะอาดคราบน้ำตาบริเวณร่องจมูกและดวงตาทุกวัน",
                 "special_requirements": "ระวังโรคระบบทางเดินหายใจเนื่องจากหน้าแบน โรคถุงน้ำที่ไต (PKD) และโรคก้อนขนอุดตันในทางเดินอาหาร",
                 "general_availability": "Common",
-                "photo_url": "/static/images/persian.png",
+                "photo_url": "/static/images/007.avif",
                 "photo_desc": "แมวเปอร์เซีย ขนยาวฟูสีเทาอ่อน หน้าแบน ตาโตกลมหวาน",
             },
             {
